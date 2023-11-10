@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.AdminController">
+    <left>
+        <AnchorPane prefHeight="600.0" prefWidth="0.0" style="-fx-background-color: #5E81AC;" stylesheets="@../styles/navigation-styles.css" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutX="-1.0" layoutY="88.0" minWidth="180.0" prefHeight="510.0" prefWidth="191.0" spacing="30.0" style="-fx-background-color: transparent;">
+                    <children>
+                        <HBox>
+                            <children>
+                                <Button id="menuButton" fx:id="buttonAppartment" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToAppartment" prefHeight="50.0" prefWidth="254.0" text="My Appartment" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="39.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/condominium.png" />
+                                 </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Button id="menuButton" fx:id="buttonPayment" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToPayment" prefHeight="50.0" prefWidth="207.0" text="Payment History" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="39.0" fitWidth="38.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/service.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox fx:id="medicalHbox">
+                            <children>
+                                <Button fx:id="buttonReport" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToReport" prefHeight="50.0" prefWidth="335.0" text="Report" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="39.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/statistic.png" />
+                                 </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                  <HBox fx:id="statisticHbox1">
+                     <children>
+                        <Button fx:id="buttonNotification" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToNotification" prefHeight="50.0" prefWidth="283.0" text="Notification" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/statistic.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                        <HBox fx:id="statisticHbox">
+                            <children>
+                                <Button fx:id="buttonSetting" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="50.0" prefWidth="283.0" text="Setting" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="39.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/statistic.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <Button id="menuButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="215.0" text="LogOut" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets top="50.0" />
+                    </padding>
+                </VBox>
+                <HBox layoutX="-1.0" layoutY="14.0" prefHeight="91.0" prefWidth="192.0">
+                    <children>
+                        <Button id="menuButton" fx:id="dashboardButton" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="198.0" text="BKNCC" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Bold" size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="45.0" fitWidth="45.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/17416603551617256516-128.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane fx:id="basePane" prefHeight="603.0" prefWidth="721.0" style="-fx-background-color: #f4f6fb;" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="557.0" layoutX="515.0" layoutY="14.0" stroke="#b9bdbf" strokeType="OUTSIDE" strokeWidth="0.0" width="180.0" />
+                <Label alignment="BASELINE_CENTER" layoutX="495.0" layoutY="32.0" prefHeight="39.0" prefWidth="182.0" text="Welcome back">
+                    <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="usernameLabel" alignment="BASELINE_CENTER" layoutX="495.0" layoutY="71.0" prefHeight="39.0" prefWidth="182.0" text="Admin" textFill="#1bbde4">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Line endX="50.0" layoutX="586.0" layoutY="139.0" startX="-50.0" stroke="#b9bdbf" />
+            </children></AnchorPane>
+    </center>
+</BorderPane>
