@@ -1,5 +1,6 @@
 package com.management.apartment_management.Controllers;
 
+import com.management.apartment_management.Query.TenantQuery;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,10 +34,13 @@ public class AdminController implements Initializable {
     private AnchorPane basePane;
 
     @FXML
-    private Button buttonAppartment;
+    private Button buttonApartment;
 
     @FXML
-    private Button buttonNotification;
+    private Button buttonBuilding;
+
+    @FXML
+    private Button buttonContract;
 
     @FXML
     private Button buttonPayment;
@@ -45,7 +49,8 @@ public class AdminController implements Initializable {
     private Button buttonReport;
 
     @FXML
-    private Button buttonSetting;
+    private Button buttonTenant;
+
 
     @FXML
     private Button dashboardButton;
@@ -77,14 +82,38 @@ public class AdminController implements Initializable {
         viewUtils.changeScene(event, ADMIN_VIEW_FXML);
     }
     @FXML
-    void switchToAppartment(ActionEvent event) {
+    void switchToBuilding() throws IOException {
+        Preferences pre = Preferences.userRoot();
+        String role = pre.get("role", "");
+//        if (role.equals("chunuoi")) {
+//            viewUtils.changeAnchorPane(basePane, PET_VIEW_FXML);
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PET_VIEW_FXML));
+//            Node node = fxmlLoader.load();
+//            basePane.getChildren().setAll(node);
+//            PetController petController = fxmlLoader.getController();
+//            petController.setOwnerID(Integer.parseInt(pre.get("id", "")));
+//            petController.petGrid();
+//        }
+        if (role.equals("Tenant")) {
+            viewUtils.changeAnchorPane(basePane, BUILDING_VIEW_FXML);
+        }
+        if (role.equals("Admin")) {
+            viewUtils.changeAnchorPane(basePane, BUILDING_VIEW_FXML);
+        }
+
 
     }
+    @FXML
+    void switchToApartment(ActionEvent event) {
+
+    }
+
 
     @FXML
-    void switchToNotification(ActionEvent event) {
+    void switchToContract(ActionEvent event) {
 
     }
+
 
     @FXML
     void switchToPayment(ActionEvent event) {
@@ -97,7 +126,7 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    void switchToSetting(ActionEvent event) {
+    void switchToTenant(ActionEvent event) {
 
     }
     @FXML
@@ -110,10 +139,11 @@ public class AdminController implements Initializable {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
         if (role.equals("Tenant")) {
+            int id = Integer.parseInt(pre.get("id", ""));
+            usernameLabel.setText("" + TenantQuery.getNameFromID(id));
         }
 
         if (role.equals("Admin")) {
-
         }
     }
 }
