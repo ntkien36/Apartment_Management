@@ -9,7 +9,7 @@ import java.util.List;
 import static com.management.apartment_management.Constants.DBConstants.*;
 
 public class ApartmentQuery {
-    public static List<Apartment> getPetsByOwnerID(int apartmentID) {
+    public static List<Apartment> getApartmentsByBuildingID(int apartmentID) {
         List<Apartment> pets = new ArrayList<>();
         String SELECT_QUERY = "SELECT * FROM apartment WHERE building_ID = ?";
         try {
@@ -19,7 +19,7 @@ public class ApartmentQuery {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     int ID = resultSet.getInt("apartment_id");
-                    int number = resultSet.getInt("number");
+                    int number = resultSet.getInt("apartment_number");
                     int size = resultSet.getInt("size");
                     int rent = resultSet.getInt("rent");
                     int buildingID = resultSet.getInt("building_id");

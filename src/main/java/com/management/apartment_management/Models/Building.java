@@ -15,6 +15,11 @@ public class Building {
         this.address = address;
         this.total = total;
     }
+    public Building(String name, String address, int total) {
+        this.name = name;
+        this.address = address;
+        this.total = total;
+    }
 
     // Getter and setter methods
 

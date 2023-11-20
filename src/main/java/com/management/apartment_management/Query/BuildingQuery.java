@@ -25,6 +25,7 @@ public class BuildingQuery {
         }
         return name;
     }
+
     public static List<Building> getBuilding() {
         List<Building> buildings = new ArrayList<>();
         String SELECT_QUERY = "SELECT * FROM building";
@@ -48,5 +49,47 @@ public class BuildingQuery {
         }
         return buildings;
     }
+
+    public static int addBuilding(Building building) throws SQLException {
+        int maxBuildingId = 0;
+        String INSERT_QUERY = "INSERT INTO building (building_id, name, address, total_apartment) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+             PreparedStatement preparedStatement = conn.prepareStatement(INSERT_QUERY, Statement.RETURN_GENERATED_KEYS)
+        ) {
+            preparedStatement.setInt(1, building.getId());
+            preparedStatement.setString(2, building.getName());
+            preparedStatement.setString(3, building.getAddress());
+            preparedStatement.setInt(4, building.getTotal());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error adding building: " + building, e);
+        }
+    }
+//        int maxBuildingId = 0;
+//        String SELECT_QUERY = "SELECT MAX(user_id) FROM user";
+//        try {
+//            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+//            PreparedStatement selectStatement = conn.prepareStatement(SELECT_QUERY);
+//            ResultSet resultSet = selectStatement.executeQuery();
+//            if (resultSet.next()) {
+//                maxBuildingId = resultSet.getInt(1);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        String INSERT_QUERY = "INSERT INTO building (building_id, name, address, total_apartment) VALUES (?, ?, ?, ?)";
+//        try {
+//            int nextBuildingId = maxBuildingId + 1;
+//            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+//            PreparedStatement preparedStatement = conn.prepareStatement(INSERT_QUERY, Statement.RETURN_GENERATED_KEYS);
+//            preparedStatement.setInt(1, nextBuildingId);
+//            preparedStatement.setString(2, building.getName());
+//            preparedStatement.setString(3, building.getAddress());
+//            preparedStatement.setInt(4, building.getTotal());
+//            return preparedStatement.executeUpdate();
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error adding building: " + building, e);
+//        }
+//    }
 }
 
