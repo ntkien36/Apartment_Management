@@ -1,6 +1,8 @@
 package com.management.apartment_management.Query;
 
 import com.management.apartment_management.Models.Apartment;
+import com.management.apartment_management.Models.Building;
+import com.management.apartment_management.Models.Tenant;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -49,6 +51,26 @@ public class ApartmentQuery {
         }
         return numberOfAPMs;
     }
+    public static List<Integer> getUnrentedApartmentID(){
+        List<Integer> unrentedApartmentID = new ArrayList<>();
+        String SELECT_QUERY = "SELECT a.apartment_id\n" +
+                "FROM apartment a\n" +
+                "LEFT JOIN tenant t ON a.apartment_id = t.apartment_id\n" +
+                "WHERE t.tenant_id IS NULL;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("apartment_id");
+                unrentedApartmentID.add(id);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving id of unrented apartment: ", e);
+        }
+        return unrentedApartmentID;
+    }
 //    public static int getNumberOfPets() {
 //        int numberOfPets = 0;
 //        String SELECT_QUERY = "SELECT COUNT(*) AS count FROM Pets";
@@ -65,20 +87,7 @@ public class ApartmentQuery {
 //        return numberOfPets;
 //    }
 //
-//    public static int addPet(Pet pet) {
-//        String INSERT_QUERY = "INSERT INTO Pets (Name, Gender, Info, Owner_ID, Employee_ID) VALUES (?, ?, ?, ?, ?)";
-//        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
-//             PreparedStatement preparedStatement = conn.prepareStatement(INSERT_QUERY)) {
-//            preparedStatement.setString(1, pet.getName());
-//            preparedStatement.setString(2, String.valueOf(pet.getGender()));
-//            preparedStatement.setString(3, pet.getInfo());
-//            preparedStatement.setInt(4, pet.getOwnerID());
-//            preparedStatement.setInt(5, pet.getEmployeeID());
-//            return preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error adding pet: " + pet, e);
-//        }
-//    }
+
 //
 //    public static int deletePet(Pet pet) {
 //        String DELETE_QUERY = "DELETE from Pets WHERE id = ? ";

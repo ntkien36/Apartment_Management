@@ -39,6 +39,7 @@ import static com.management.apartment_management.Utils.Utils.createDialog;
 
 public class DetailBuildingController implements Initializable {
     public Building building;
+    private final ViewUtils viewUtils = new ViewUtils();
 
     @FXML
     public TextField addressText;
@@ -227,8 +228,8 @@ public class DetailBuildingController implements Initializable {
     }
 
     @FXML
-    void search(MouseEvent event) {
-
+    void back(ActionEvent event) throws IOException {
+        viewUtils.changeAnchorPane(basePane, BUILDING_VIEW_FXML);
     }
 
 }

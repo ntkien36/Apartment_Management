@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Building.BuildingController">
+<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Tenant.TenantController">
     <children>
       <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
          <children>
@@ -22,15 +22,16 @@
             <TableView fx:id="table" layoutX="16.0" layoutY="83.0" prefHeight="370.0" prefWidth="630.0" stylesheets="@../styles/table.css">
               <columns>
                   <TableColumn fx:id="indexColumn" prefWidth="33.0" text="#" />
-                <TableColumn fx:id="name" prefWidth="142.39996337890625" text="Buiding Name" />
-                <TableColumn fx:id="address" prefWidth="195.19996643066406" text="Address" />
-                  <TableColumn fx:id="total" prefWidth="116.800048828125" text="Total Apartment" />
-                  <TableColumn fx:id="nApparts" minWidth="0.0" prefWidth="140.7999267578125" text="Rented Apartment" />
+                <TableColumn fx:id="apartmentID" prefWidth="84.79998779296875" text="Apartment_ID" />
+                <TableColumn fx:id="name" prefWidth="148.0000762939453" text="Name" />
+                  <TableColumn fx:id="status" prefWidth="72.00006103515625" text="Status" />
+                  <TableColumn fx:id="contact" minWidth="0.0" prefWidth="112.800048828125" text="Contact" />
+                  <TableColumn fx:id="startEndDate" minWidth="0.0" prefWidth="183.199951171875" text="Start Date - End Date" />
               </columns>
             </TableView>
          </children>
       </Pane>
-        <Text layoutX="43.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Building" wrappingWidth="419.4435729980469">
+        <Text layoutX="43.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenant" wrappingWidth="419.4435729980469">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
@@ -64,7 +65,19 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Button layoutX="523.0" layoutY="87.0" mnemonicParsing="false" onAction="#filtering" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
+      <Button layoutX="622.0" layoutY="86.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="444.0" layoutY="87.0" mnemonicParsing="false" onAction="#filter" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
@@ -76,15 +89,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="filter" layoutX="294.0" layoutY="87.0" onMouseClicked="#filter" prefHeight="30.0" prefWidth="216.0" promptText="Filter for Address" style="-fx-background-color: #FFFFFF;" visible="false" />
-      <Button layoutX="622.0" layoutY="86.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+      <Button layoutX="541.0" layoutY="86.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="19.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icons/add.png" />
+                  <Image url="@../icons/minus.png" />
                </image>
             </ImageView>
          </graphic>

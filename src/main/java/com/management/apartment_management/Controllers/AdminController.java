@@ -116,8 +116,15 @@ public class AdminController implements Initializable {
 
 
     @FXML
-    void switchToPayment(ActionEvent event) {
-
+    void switchToPayment(ActionEvent event) throws IOException {
+        Preferences pre = Preferences.userRoot();
+        String role = pre.get("role", "");
+        if (role.equals("Tenant")) {
+            viewUtils.changeAnchorPane(basePane, PAYMENT_VIEW_FXML);
+        }
+        if (role.equals("Admin")) {
+            viewUtils.changeAnchorPane(basePane, PAYMENT_VIEW_FXML);
+        }
     }
 
     @FXML
@@ -126,8 +133,15 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    void switchToTenant(ActionEvent event) {
-
+    void switchToTenant(ActionEvent event) throws IOException {
+        Preferences pre = Preferences.userRoot();
+        String role = pre.get("role", "");
+        if (role.equals("Tenant")) {
+            viewUtils.changeAnchorPane(basePane, TENANT_VIEW_FXML);
+        }
+        if (role.equals("Admin")) {
+            viewUtils.changeAnchorPane(basePane, TENANT_VIEW_FXML);
+        }
     }
     @FXML
     void logout(ActionEvent event) throws IOException {

@@ -48,7 +48,7 @@
             </HBox>
          </children>
       </Pane>
-        <Text fx:id="nameText" layoutX="44.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Building" wrappingWidth="250.4000000000001">
+        <Text fx:id="nameText" layoutX="89.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Building" wrappingWidth="250.4000000000001">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
@@ -90,5 +90,17 @@
          </graphic>
       </Button>
       <TextField fx:id="filter" layoutX="378.0" layoutY="87.0" onMouseClicked="#filter" prefHeight="30.0" prefWidth="216.0" promptText="Filter for Apartment Number" style="-fx-background-color: #FFFFFF;" visible="false" />
+      <Button layoutX="32.0" layoutY="83.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

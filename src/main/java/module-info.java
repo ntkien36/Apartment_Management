@@ -12,7 +12,12 @@ module com.management.apartment_management {
     opens com.management.apartment_management.Models to javafx.fxml;
     exports com.management.apartment_management.Controllers;
     exports com.management.apartment_management.Controllers.Building;
+    exports com.management.apartment_management.Controllers.Tenant;
+    exports com.management.apartment_management.Controllers.Payment;
+
     opens com.management.apartment_management.Utils to javafx.fxml;
     opens com.management.apartment_management.Controllers to javafx.fxml;
     opens com.management.apartment_management.Controllers.Building to javafx.fxml;
+    opens com.management.apartment_management.Controllers.Tenant to javafx.fxml;
+    opens com.management.apartment_management.Controllers.Payment to javafx.fxml;
 }
