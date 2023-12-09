@@ -104,14 +104,28 @@ public class AdminController implements Initializable {
 
     }
     @FXML
-    void switchToApartment(ActionEvent event) {
-
+    void switchToApartment(ActionEvent event) throws IOException {
+        Preferences pre = Preferences.userRoot();
+        String role = pre.get("role", "");
+        if (role.equals("Tenant")) {
+            viewUtils.changeAnchorPane(basePane, APARTMENT_VIEW_FXML);
+        }
+        if (role.equals("Admin")) {
+            viewUtils.changeAnchorPane(basePane, APARTMENT_VIEW_FXML);
+        }
     }
 
 
     @FXML
-    void switchToContract(ActionEvent event) {
-
+    void switchToContract(ActionEvent event) throws IOException {
+        Preferences pre = Preferences.userRoot();
+        String role = pre.get("role", "");
+        if (role.equals("Tenant")) {
+            viewUtils.changeAnchorPane(basePane, CONTRACT_VIEW_FXML);
+        }
+        if (role.equals("Admin")) {
+            viewUtils.changeAnchorPane(basePane, CONTRACT_VIEW_FXML);
+        }
     }
 
 

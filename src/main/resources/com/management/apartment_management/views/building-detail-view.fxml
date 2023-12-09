@@ -31,19 +31,19 @@
             <HBox alignment="CENTER" layoutX="16.0" layoutY="-8.0" prefHeight="45.0" prefWidth="311.0" spacing="10.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="64.0" text="Address" />
-                  <TextField fx:id="addressText" prefHeight="26.0" prefWidth="250.0" text="id" />
+                  <TextField fx:id="addressText" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="id" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="16.0" layoutY="21.0" prefHeight="45.0" prefWidth="311.0" spacing="10.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="130.0" text="Total Apartment" />
-                  <TextField fx:id="totalText" prefHeight="26.0" prefWidth="250.0" text="total" />
+                  <TextField fx:id="totalText" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="total" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="335.0" layoutY="21.0" prefHeight="45.0" prefWidth="311.0" spacing="10.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="50.0" text="Rented " />
-                  <TextField fx:id="rentText" prefHeight="26.0" prefWidth="244.0" text="totalRent" />
+                  <TextField fx:id="rentText" prefHeight="26.0" prefWidth="244.0" style="-fx-background-color: #ffffff;" text="totalRent" />
                </children>
             </HBox>
          </children>

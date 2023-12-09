@@ -10,12 +10,26 @@ public class Apartment {
     public Apartment() {
     }
 
-    public Apartment(int ID, int number, int size, int rent, int buildingID) {
+//    public Apartment(int ID, int number, int size, int rent, int buildingID) {
+//        this.ID = ID;
+//        this.number = number;
+//        this.size = size;
+//        this.rent = rent;
+//        this.buildingID = buildingID;
+//    }
+    public Apartment(int ID, int buildingID, int number, int size, int rent) {
         this.ID = ID;
+        this.buildingID = buildingID;
         this.number = number;
         this.size = size;
         this.rent = rent;
+    }
+
+    public Apartment(int buildingID, int number, int size, int rent) {
         this.buildingID = buildingID;
+        this.number = number;
+        this.size = size;
+        this.rent = rent;
     }
 
     public int getID() {

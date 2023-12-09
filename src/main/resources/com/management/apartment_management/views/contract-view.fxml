@@ -14,18 +14,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Payment.PaymentController">
+<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Contract.ContractController">
     <children>
       <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
          <children>
-            <Pagination fx:id="pagination" layoutX="13.0" layoutY="286.0" prefHeight="212.0" prefWidth="630.0" />
-            <TableView fx:id="table" layoutX="16.0" layoutY="289.0" prefHeight="164.0" prefWidth="630.0" stylesheets="@../styles/table.css">
+            <Pagination fx:id="pagination" layoutX="13.0" layoutY="47.0" prefHeight="450.0" prefWidth="630.0" />
+            <TableView fx:id="table" layoutX="16.0" layoutY="54.0" prefHeight="399.0" prefWidth="630.0" stylesheets="@../styles/table.css">
               <columns>
                   <TableColumn fx:id="indexColumn" prefWidth="33.0" text="#" />
-                <TableColumn fx:id="tenantName" prefWidth="84.79998779296875" text="Username" />
-                <TableColumn fx:id="amount" prefWidth="136.00001525878906" text="Price" />
-                  <TableColumn fx:id="timePayment" prefWidth="110.39996337890625" text="Time Payment" />
-                  <TableColumn fx:id="note" minWidth="0.0" prefWidth="108.800048828125" text="Content" />
+                <TableColumn fx:id="tenantName" prefWidth="137.5999755859375" text="Tenant Name" />
+                <TableColumn fx:id="note" prefWidth="127.20002746582031" text="Content Contract" />
+                  <TableColumn fx:id="startTime" prefWidth="96.800048828125" text="Start Time" />
+                  <TableColumn fx:id="endTime" minWidth="0.0" prefWidth="84.800048828125" text="End Time" />
                   <TableColumn minWidth="0.0" prefWidth="150.4000244140625" text="Function">
                      <columns>
                         <TableColumn fx:id="delete" prefWidth="75.0" text="Delete" />
@@ -33,32 +33,11 @@
                      </columns></TableColumn>
               </columns>
             </TableView>
-            <Text layoutX="18.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="History Payment" wrappingWidth="419.4435729980469">
+            <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lease Contracts" wrappingWidth="419.4435729980469">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Pagination fx:id="pagination1" layoutX="15.0" layoutY="37.0" prefHeight="212.0" prefWidth="630.0" />
-            <TableView fx:id="table1" layoutX="18.0" layoutY="40.0" prefHeight="164.0" prefWidth="630.0" stylesheets="@../styles/table.css">
-               <columns>
-                  <TableColumn fx:id="indexColumn1" prefWidth="33.0" text="#" />
-                  <TableColumn fx:id="tenantName1" prefWidth="84.79998779296875" text="Username" />
-                  <TableColumn fx:id="amount1" prefWidth="136.00001525878906" text="Price" />
-                  <TableColumn fx:id="timePayment1" prefWidth="110.39996337890625" text="Payment Deadline" />
-                  <TableColumn fx:id="note1" minWidth="0.0" prefWidth="108.800048828125" text="Content" />
-                  <TableColumn minWidth="0.0" prefWidth="150.4000244140625" text="Function">
-                     <columns>
-                        <TableColumn fx:id="delete1" prefWidth="75.0" text="Delete" />
-                        <TableColumn fx:id="edit1" prefWidth="75.0" text="Edit" />
-                     </columns>
-                  </TableColumn>
-               </columns>
-            </TableView>
-              <Text layoutX="18.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User has not yet payment" wrappingWidth="419.4435729980469">
-                  <font>
-                      <Font name="System Bold" size="24.0" />
-                  </font>
-              </Text>
          </children>
       </Pane>
       <HBox layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
@@ -90,7 +69,7 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Button layoutX="607.0" layoutY="88.0" mnemonicParsing="false" onAction="#filter" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
+      <Button layoutX="528.0" layoutY="87.0" mnemonicParsing="false" onAction="#filtering" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
@@ -102,5 +81,18 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="622.0" layoutY="86.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="filter" layoutX="299.0" layoutY="87.0" onMouseClicked="#filter" prefHeight="30.0" prefWidth="216.0" promptText="Filter for EndTime" style="-fx-background-color: #FFFFFF;" visible="false" />
     </children>
 </AnchorPane>

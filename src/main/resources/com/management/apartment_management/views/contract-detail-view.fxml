@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Contract.DetailContractController">
+    <children>
+      <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <HBox alignment="CENTER" layoutX="41.0" layoutY="27.0" prefHeight="45.0" prefWidth="378.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="126.0" text="Tenant Name:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                    <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenant" wrappingWidth="241.60000000000014">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="153.0" layoutY="114.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="146.0" text="Start Date">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="startDate" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #ffffff;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="153.0" layoutY="150.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="147.0" text="End Date">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <DatePicker fx:id="endDate" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #ffffff;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="31.0" layoutY="272.0" prefHeight="45.0" prefWidth="359.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="150.0" text="Note">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="noteText" prefHeight="40.0" prefWidth="201.0" style="-fx-background-color: #ffffff;" text="note">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="31.0" layoutY="227.0" prefHeight="45.0" prefWidth="359.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="150.0" text="Amount">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="amountText" prefHeight="13.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" text="amount">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+               </children>
+            </HBox>
+            <Label layoutX="41.0" layoutY="123.0" prefHeight="26.0" prefWidth="154.0" text="Contract:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <Pane prefHeight="62.0" prefWidth="575.0" />
+            <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/bell.png" />
+               </image>
+               <HBox.margin>
+                  <Insets top="13.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="43.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/profile.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="10.0" top="11.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Button layoutX="650.0" layoutY="86.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text fx:id="log" layoutX="522.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="121.60000000000014" />
+      <Button layoutX="32.0" layoutY="86.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+    </children>
+</AnchorPane>
