@@ -54,6 +54,50 @@ public class TenantQuery {
         }
         return pets;
     }
+
+    public static Date getStartDateByTenantID(int tenantID) {
+        Date start_date = null;
+        String SELECT_QUERY = "SELECT MIN(start_date) AS earliest_start_date\n" +
+                "FROM contract\n" +
+                "WHERE tenant_id = ?;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, tenantID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    start_date = resultSet.getDate("earliest_start_date");
+
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for tenant ID: " + tenantID, e);
+        }
+        return start_date;
+    }
+    public static Date getEndDateByTenantID(int tenantID) {
+        Date end_date = null;
+        String SELECT_QUERY = "SELECT MAX(end_date) AS late_end_date\n" +
+                "FROM contract\n" +
+                "WHERE tenant_id = ?;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, tenantID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    end_date = resultSet.getDate("late_end_date");
+
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for tenant ID: " + tenantID, e);
+        }
+        return end_date;
+
+    }
 //    public static List<Tenant> getTenantDetailByTenantID(int tenantID) {
 //        List<Tenant> tenants = new ArrayList<>();
 //        String SELECT_QUERY = "SELECT t.*, a.apartment_number, b.name AS building_name, IFNULL(CONCAT(MIN(c.start_date), ' - ', MAX(c.end_date)), '') AS startEndDate\n" +

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Payment.UserPaymentController">
+    <children>
+      <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <Pagination fx:id="pagination" layoutX="13.0" layoutY="286.0" prefHeight="212.0" prefWidth="630.0" />
+            <TableView fx:id="table" layoutX="16.0" layoutY="289.0" prefHeight="164.0" prefWidth="630.0" stylesheets="@../styles/table.css">
+              <columns>
+                  <TableColumn fx:id="indexColumn" prefWidth="33.0" text="#" />
+                  <TableColumn fx:id="note" minWidth="0.0" prefWidth="331.20008850097656" text="Content" />
+                <TableColumn fx:id="amount" prefWidth="95.19989013671875" text="Price" />
+                  <TableColumn fx:id="timePayment" prefWidth="170.39990234375" text="Time Payment" />
+              </columns>
+            </TableView>
+            <Text layoutX="18.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment History" wrappingWidth="419.4435729980469">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Pagination fx:id="pagination1" layoutX="15.0" layoutY="37.0" prefHeight="212.0" prefWidth="630.0" />
+            <TableView fx:id="table1" layoutX="18.0" layoutY="40.0" prefHeight="164.0" prefWidth="630.0" stylesheets="@../styles/table.css">
+               <columns>
+                  <TableColumn fx:id="indexColumn1" prefWidth="33.0" text="#" />
+                  <TableColumn fx:id="note1" minWidth="0.0" prefWidth="331.2000274658203" text="Content" />
+                  <TableColumn fx:id="amount1" prefWidth="88.0" text="Price" />
+                  <TableColumn fx:id="timePayment1" prefWidth="176.7999267578125" text="Payment Deadline" />
+               </columns>
+            </TableView>
+              <Text layoutX="18.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have not yet payment" wrappingWidth="419.4435729980469">
+                  <font>
+                      <Font name="System Bold" size="24.0" />
+                  </font>
+              </Text>
+         </children>
+      </Pane>
+      <HBox layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <TextField fx:id="search" onMouseClicked="#search" prefHeight="38.0" prefWidth="216.0" promptText="Search" style="-fx-background-color: #F4F4F4;">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="11.0" right="1.0" top="11.0" />
+               </HBox.margin>
+            </TextField>
+            <Pane prefHeight="46.0" prefWidth="339.0" />
+            <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/bell.png" />
+               </image>
+               <HBox.margin>
+                  <Insets top="13.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="43.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/profile.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="10.0" top="11.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+    </children>
+</AnchorPane>

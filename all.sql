@@ -704,3 +704,233 @@ values
 (98, 'user98', 'password98', 'Tenant'),
 (99, 'user99', 'password99', 'Tenant'),
 (100, 'user100', 'password100', 'Tenant');
+
+ALTER TABLE user
+ADD tenant_id int;
+
+UPDATE user SET tenant_id = 100 WHERE user_id = 1;
+UPDATE user SET tenant_id = 2 WHERE user_id = 2;
+UPDATE user SET tenant_id = 10 WHERE user_id = 3;
+UPDATE user SET tenant_id = 39 WHERE user_id = 4;
+UPDATE user SET tenant_id = 27 WHERE user_id = 5;
+UPDATE user SET tenant_id = 36 WHERE user_id = 6;
+UPDATE user SET tenant_id = 67 WHERE user_id = 7;
+UPDATE user SET tenant_id = 53 WHERE user_id = 8;
+UPDATE user SET tenant_id = 37 WHERE user_id = 9;
+UPDATE user SET tenant_id = 69 WHERE user_id = 10;
+UPDATE user SET tenant_id = 21 WHERE user_id = 11;
+UPDATE user SET tenant_id = 41 WHERE user_id = 12;
+UPDATE user SET tenant_id = 48 WHERE user_id = 13;
+UPDATE user SET tenant_id = 100 WHERE user_id = 14;
+UPDATE user SET tenant_id = 50 WHERE user_id = 15;
+UPDATE user SET tenant_id = 74 WHERE user_id = 16;
+UPDATE user SET tenant_id = 84 WHERE user_id = 17;
+UPDATE user SET tenant_id = 25 WHERE user_id = 18;
+UPDATE user SET tenant_id = 89 WHERE user_id = 19;
+UPDATE user SET tenant_id = 97 WHERE user_id = 20;
+UPDATE user SET tenant_id = 21 WHERE user_id = 21;
+UPDATE user SET tenant_id = 58 WHERE user_id = 22;
+UPDATE user SET tenant_id = 73 WHERE user_id = 23;
+UPDATE user SET tenant_id = 53 WHERE user_id = 24;
+UPDATE user SET tenant_id = 23 WHERE user_id = 25;
+UPDATE user SET tenant_id = 12 WHERE user_id = 26;
+UPDATE user SET tenant_id = 42 WHERE user_id = 27;
+UPDATE user SET tenant_id = 26 WHERE user_id = 28;
+UPDATE user SET tenant_id = 37 WHERE user_id = 29;
+UPDATE user SET tenant_id = 87 WHERE user_id = 30;
+UPDATE user SET tenant_id = 47 WHERE user_id = 31;
+UPDATE user SET tenant_id = 33 WHERE user_id = 32;
+UPDATE user SET tenant_id = 46 WHERE user_id = 33;
+UPDATE user SET tenant_id = 4 WHERE user_id = 34;
+UPDATE user SET tenant_id = 70 WHERE user_id = 35;
+UPDATE user SET tenant_id = 53 WHERE user_id = 36;
+UPDATE user SET tenant_id = 49 WHERE user_id = 37;
+UPDATE user SET tenant_id = 59 WHERE user_id = 38;
+UPDATE user SET tenant_id = 4 WHERE user_id = 39;
+UPDATE user SET tenant_id = 27 WHERE user_id = 40;
+UPDATE user SET tenant_id = 18 WHERE user_id = 41;
+UPDATE user SET tenant_id = 75 WHERE user_id = 42;
+UPDATE user SET tenant_id = 32 WHERE user_id = 43;
+UPDATE user SET tenant_id = 43 WHERE user_id = 44;
+UPDATE user SET tenant_id = 98 WHERE user_id = 45;
+UPDATE user SET tenant_id = 89 WHERE user_id = 46;
+UPDATE user SET tenant_id = 95 WHERE user_id = 47;
+UPDATE user SET tenant_id = 37 WHERE user_id = 48;
+UPDATE user SET tenant_id = 98 WHERE user_id = 49;
+UPDATE user SET tenant_id = 78 WHERE user_id = 50;
+UPDATE user SET tenant_id = 48 WHERE user_id = 51;
+UPDATE user SET tenant_id = 67 WHERE user_id = 52;
+UPDATE user SET tenant_id = 62 WHERE user_id = 53;
+UPDATE user SET tenant_id = 8 WHERE user_id = 54;
+UPDATE user SET tenant_id = 78 WHERE user_id = 55;
+UPDATE user SET tenant_id = 64 WHERE user_id = 56;
+UPDATE user SET tenant_id = 85 WHERE user_id = 57;
+UPDATE user SET tenant_id = 54 WHERE user_id = 58;
+UPDATE user SET tenant_id = 69 WHERE user_id = 59;
+UPDATE user SET tenant_id = 94 WHERE user_id = 60;
+UPDATE user SET tenant_id = 23 WHERE user_id = 61;
+UPDATE user SET tenant_id = 51 WHERE user_id = 62;
+UPDATE user SET tenant_id = 20 WHERE user_id = 63;
+UPDATE user SET tenant_id = 83 WHERE user_id = 64;
+UPDATE user SET tenant_id = 60 WHERE user_id = 65;
+UPDATE user SET tenant_id = 83 WHERE user_id = 66;
+UPDATE user SET tenant_id = 6 WHERE user_id = 67;
+UPDATE user SET tenant_id = 12 WHERE user_id = 68;
+UPDATE user SET tenant_id = 69 WHERE user_id = 69;
+UPDATE user SET tenant_id = 15 WHERE user_id = 70;
+UPDATE user SET tenant_id = 18 WHERE user_id = 71;
+UPDATE user SET tenant_id = 70 WHERE user_id = 72;
+UPDATE user SET tenant_id = 89 WHERE user_id = 73;
+UPDATE user SET tenant_id = 59 WHERE user_id = 74;
+UPDATE user SET tenant_id = 1 WHERE user_id = 75;
+UPDATE user SET tenant_id = 35 WHERE user_id = 76;
+UPDATE user SET tenant_id = 79 WHERE user_id = 77;
+UPDATE user SET tenant_id = 98 WHERE user_id = 78;
+UPDATE user SET tenant_id = 82 WHERE user_id = 79;
+UPDATE user SET tenant_id = 26 WHERE user_id = 80;
+UPDATE user SET tenant_id = 85 WHERE user_id = 81;
+UPDATE user SET tenant_id = 44 WHERE user_id = 82;
+UPDATE user SET tenant_id = 48 WHERE user_id = 83;
+UPDATE user SET tenant_id = 48 WHERE user_id = 84;
+UPDATE user SET tenant_id = 30 WHERE user_id = 85;
+UPDATE user SET tenant_id = 6 WHERE user_id = 86;
+UPDATE user SET tenant_id = 28 WHERE user_id = 87;
+UPDATE user SET tenant_id = 33 WHERE user_id = 88;
+UPDATE user SET tenant_id = 2 WHERE user_id = 89;
+UPDATE user SET tenant_id = 60 WHERE user_id = 90;
+UPDATE user SET tenant_id = 21 WHERE user_id = 91;
+UPDATE user SET tenant_id = 81 WHERE user_id = 92;
+UPDATE user SET tenant_id = 19 WHERE user_id = 93;
+UPDATE user SET tenant_id = 87 WHERE user_id = 94;
+UPDATE user SET tenant_id = 15 WHERE user_id = 95;
+UPDATE user SET tenant_id = 83 WHERE user_id = 96;
+UPDATE user SET tenant_id = 88 WHERE user_id = 97;
+UPDATE user SET tenant_id = 36 WHERE user_id = 98;
+UPDATE user SET tenant_id = 9 WHERE user_id = 99;
+UPDATE user SET tenant_id = 51 WHERE user_id = 100;
+
+
+alter table contract
+modify column notes varchar(1000);
+
+UPDATE contract SET notes = 'Check if the area is secure and close to amenities such as schools, hospitals, and stores.' WHERE contract_id = 1;
+UPDATE contract SET notes = 'Understand the conditions and fees for canceling the lease before the agreed-upon term.' WHERE contract_id = 2;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 3;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 4;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 5;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 6;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 7;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 8;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 9;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 10;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 11;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 12;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 13;
+UPDATE contract SET notes = 'Check if the area is secure and close to amenities such as schools, hospitals, and stores.' WHERE contract_id = 14;
+UPDATE contract SET notes = 'Determine the rental period and consider the possibility of extending the contract after that time.' WHERE contract_id = 15;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 16;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 17;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 18;
+UPDATE contract SET notes = 'Read the lease agreement thoroughly to understand the terms and conditions. Pay attention to the lease period, cancellation conditions, and other provisions.' WHERE contract_id = 19;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 20;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 21;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 22;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 23;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 24;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 25;
+UPDATE contract SET notes = 'Read the lease agreement thoroughly to understand the terms and conditions. Pay attention to the lease period, cancellation conditions, and other provisions.' WHERE contract_id = 26;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 27;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 28;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 29;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 30;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 31;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 32;
+UPDATE contract SET notes = 'Check if the area is secure and close to amenities such as schools, hospitals, and stores.' WHERE contract_id = 33;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 34;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 35;
+UPDATE contract SET notes = 'Determine the rental period and consider the possibility of extending the contract after that time.' WHERE contract_id = 36;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 37;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 38;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 39;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 40;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 41;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 42;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 43;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 44;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 45;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 46;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 47;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 48;
+UPDATE contract SET notes = 'Determine the rental period and consider the possibility of extending the contract after that time.' WHERE contract_id = 49;
+UPDATE contract SET notes = 'Check if the area is secure and close to amenities such as schools, hospitals, and stores.' WHERE contract_id = 50;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 51;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 52;
+UPDATE contract SET notes = 'Check if the area is secure and close to amenities such as schools, hospitals, and stores.' WHERE contract_id = 53;
+UPDATE contract SET notes = 'Read the lease agreement thoroughly to understand the terms and conditions. Pay attention to the lease period, cancellation conditions, and other provisions.' WHERE contract_id = 54;
+UPDATE contract SET notes = 'Read the lease agreement thoroughly to understand the terms and conditions. Pay attention to the lease period, cancellation conditions, and other provisions.' WHERE contract_id = 55;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 56;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 57;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 58;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 59;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 60;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 61;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 62;
+UPDATE contract SET notes = 'Determine the rental period and consider the possibility of extending the contract after that time.' WHERE contract_id = 63;
+UPDATE contract SET notes = 'Understand the conditions and fees for canceling the lease before the agreed-upon term.' WHERE contract_id = 64;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 65;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 66;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 67;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 68;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 69;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 70;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 71;
+UPDATE contract SET notes = 'Understand the conditions and fees for canceling the lease before the agreed-upon term.' WHERE contract_id = 72;
+UPDATE contract SET notes = 'Read the lease agreement thoroughly to understand the terms and conditions. Pay attention to the lease period, cancellation conditions, and other provisions.' WHERE contract_id = 73;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 74;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 75;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 76;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 77;
+UPDATE contract SET notes = 'Understand the conditions and fees for canceling the lease before the agreed-upon term.' WHERE contract_id = 78;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 79;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 80;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 81;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 82;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 83;
+UPDATE contract SET notes = 'Inspect the condition of the house and available appliances to ensure they are in working order.' WHERE contract_id = 84;
+UPDATE contract SET notes = 'If you have pets, check whether the landlord accepts pets.' WHERE contract_id = 85;
+UPDATE contract SET notes = 'Understand the conditions and fees for canceling the lease before the agreed-upon term.' WHERE contract_id = 86;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 87;
+UPDATE contract SET notes = 'Determine the rental period and consider the possibility of extending the contract after that time.' WHERE contract_id = 88;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 89;
+UPDATE contract SET notes = 'Learn about maintenance and repair responsibilities between the landlord and the tenant.' WHERE contract_id = 90;
+UPDATE contract SET notes = 'If necessary, consider purchasing home insurance to protect personal belongings.' WHERE contract_id = 91;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 92;
+UPDATE contract SET notes = 'Clarify regulations regarding repairs and upgrades to the property.' WHERE contract_id = 93;
+UPDATE contract SET notes = 'Read the lease agreement thoroughly to understand the terms and conditions. Pay attention to the lease period, cancellation conditions, and other provisions.' WHERE contract_id = 94;
+UPDATE contract SET notes = 'Check if the area is secure and close to amenities such as schools, hospitals, and stores.' WHERE contract_id = 95;
+UPDATE contract SET notes = 'Clearly establish the rental price and any additional costs such as service fees, water, electricity, and internet.' WHERE contract_id = 96;
+UPDATE contract SET notes = 'If you have a car or motorcycle, inquire about parking availability and associated costs.' WHERE contract_id = 97;
+UPDATE contract SET notes = 'Reach out to the property manager or landlord to ask questions and seek clarifications.' WHERE contract_id = 98;
+UPDATE contract SET notes = 'Take note of the initial condition of the property and its assets when moving in to avoid disputes about damages when ending the lease.' WHERE contract_id = 99;
+UPDATE contract SET notes = 'Determine the rental period and consider the possibility of extending the contract after that time.' WHERE contract_id = 100;
+
+
+alter table report
+modify column description varchar(1000);
+
+alter table report
+modify column name varchar(1000);
+
+INSERT INTO report (report_id, name, description, status, create_by) VALUES
+(1, 'Construction Disturbance', 'Description Noise from neighbors, especially during the night, can be bothersome', 'DISAPPROVED', 55),
+(2, 'Construction Disturbance', 'Description Noise from construction or renovations within the apartment building', 'APPROVED', 17),  
+(3, 'Regulation Inconsistencies', 'Description Inconsistencies in resident regulations and community management', 'DISAPPROVED', 71),  
+(4, 'Common Area Maintenance', 'Description Issues related to maintaining common areas, parks, or shared facilities', 'APPROVED', 66),
+(5, 'Security Concerns', 'Description Security concerns such as theft, bike theft, or accountability in case of security issues', 'APPROVED', 44),
+(6, 'Management Fee Challenges', 'Description Management of the apartment building project can be challenging, especially concerning the collection of management fees and budget allocation', 'DISAPPROVED', 45),
+(8, 'Cleanliness Matters', 'Description Issues related to apartment building cleanliness, including waste management and maintaining a clean surrounding area', 'APPROVED', 1),
+(9, 'Technical Breakdowns', 'Description Breakdowns or technical issues within the apartment building, such as electrical or plumbing problems, elevator malfunctions, or safety system failures', 'DISAPPROVED', 39),
+(10, 'Regulatory Compliance', 'Description Compliance with apartment building regulations and laws, including dispute resolution and conflicts', 'DISAPPROVED', 85),
+(11, 'Traffic and Parking Issues', 'Description Issues related to traffic and parking within the apartment building area', 'APPROVED', 39),
+(12, 'Community Participation', 'Description Interaction and participation of residents in community meetings', 'APPROVED', 83),       
+(7, 'Common Area Maintenance', 'Description Maintenance of common areas such as elevators, hallways, and entryways to ensure safety and convenience', 'APPROVED', 76);

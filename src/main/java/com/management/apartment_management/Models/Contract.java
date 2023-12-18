@@ -36,6 +36,12 @@ public class Contract {
         this.paymentAmount = paymentAmount;
         this.notes = notes;
     }
+    public Contract(int id, String notes, int paymentAmount, Date paymentDate){
+        this.id = id;
+        this.notes = notes;
+        this.paymentAmount = paymentAmount;
+        this.endDate = paymentDate;
+    }
 
     public int getId() {
         return id;

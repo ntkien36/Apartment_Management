@@ -19,6 +19,12 @@ public class Payment {
         this.paymentDate = paymentDate;
         this.amount = amount;
     }
+    public Payment(int id, String note, int amount, Date paymentDate){
+        this.id = id;
+        this.note = note;
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+    }
     public Payment(int id, String tenantName, int amount, Date paymentDate, String note) {
         this.id = id;
         this.tenantName = tenantName;

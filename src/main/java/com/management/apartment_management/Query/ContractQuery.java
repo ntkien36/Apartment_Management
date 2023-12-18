@@ -153,4 +153,31 @@ public class ContractQuery {
         }
         return amount;
     }
+    public static List<Contract> getNotYetPaymentByTenantID(int tenantID) {
+        List<Contract> pays = new ArrayList<>();
+        String SELECT_QUERY = "SELECT c.contract_id, c.payment_amount, c.end_date, c.notes\n" +
+                "FROM contract c\n" +
+                "JOIN tenant t ON c.tenant_id = t.tenant_id\n" +
+                "WHERE t.tenant_id = ? AND c.contract_id NOT IN (SELECT contract_id FROM payment);";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, tenantID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int ID = resultSet.getInt("contract_id");
+                    int amount = resultSet.getInt("payment_amount");
+                    Date paymentDate = resultSet.getDate("end_date");
+                    String  note = resultSet.getString("notes");
+                    Contract p = new Contract(ID, note, amount, paymentDate);
+                    pays.add(p);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for not yet Payment of tenant ID: " + tenantID, e);
+        }
+        return pays;
+    }
+
 }

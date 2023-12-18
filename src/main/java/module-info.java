@@ -16,6 +16,7 @@ module com.management.apartment_management {
     exports com.management.apartment_management.Controllers.Payment;
     exports com.management.apartment_management.Controllers.Contract;
     exports com.management.apartment_management.Controllers.Apartment;
+    exports com.management.apartment_management.Controllers.Report;
 
     opens com.management.apartment_management.Utils to javafx.fxml;
     opens com.management.apartment_management.Controllers to javafx.fxml;
@@ -24,4 +25,5 @@ module com.management.apartment_management {
     opens com.management.apartment_management.Controllers.Payment to javafx.fxml;
     opens com.management.apartment_management.Controllers.Contract to javafx.fxml;
     opens com.management.apartment_management.Controllers.Apartment to javafx.fxml;
+    opens com.management.apartment_management.Controllers.Report to javafx.fxml;
 }

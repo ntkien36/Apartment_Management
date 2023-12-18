@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="basePane" prefHeight="647.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Apartment.UserApartmentController">
+    <children>
+      <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <HBox alignment="CENTER" layoutX="7.0" layoutY="89.0" prefHeight="46.0" prefWidth="483.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="132.0" text="Building Name:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                    <Text fx:id="buildingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Building" wrappingWidth="253.60000000000014">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="43.0" layoutY="313.0" prefHeight="45.0" prefWidth="277.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="100.0" text="Start Date:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="startDateText" prefHeight="40.0" prefWidth="159.0" style="-fx-background-color: #ffffff;" text="note">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="51.0" layoutY="251.0" prefHeight="45.0" prefWidth="261.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="54.0" text="Size:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <TextField fx:id="sizeText" prefHeight="13.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" text="size">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+               </children>
+            </HBox>
+            <Label layoutX="39.0" layoutY="27.0" prefHeight="32.0" prefWidth="181.0" text="My Apartment">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Line endX="425.39996337890625" layoutX="190.0" layoutY="70.0" startX="-151.3999786376953" />
+            <Line endX="425.39996337890625" layoutX="190.0" layoutY="150.0" startX="-151.3999786376953" />
+            <HBox alignment="CENTER" layoutX="28.0" layoutY="176.0" prefHeight="46.0" prefWidth="483.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="174.0" text="Apartment Number:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="numberText" strokeType="OUTSIDE" strokeWidth="0.0" text="Number" wrappingWidth="253.60000000000014">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="328.0" layoutY="251.0" prefHeight="45.0" prefWidth="261.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="54.0" text="Rent:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="rentText" prefHeight="37.0" prefWidth="161.0" style="-fx-background-color: #ffffff;" text="rent">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <Line endX="425.39996337890625" layoutX="190.0" layoutY="239.0" startX="-151.3999786376953" />
+            <Line endX="425.39996337890625" layoutX="190.0" layoutY="304.0" startX="-151.3999786376953" />
+            <Line endX="425.39996337890625" layoutX="190.0" layoutY="374.0" startX="-151.3999786376953" />
+            <Line endX="-150.8999786376953" endY="288.4999694824219" layoutX="189.0" layoutY="86.0" startX="-150.8999786376953" startY="-16.0" />
+            <Line endX="-150.8999786376953" endY="288.4999694824219" layoutX="766.0" layoutY="86.0" startX="-150.8999786376953" startY="-16.0" />
+            <HBox alignment="CENTER" layoutX="327.0" layoutY="313.0" prefHeight="45.0" prefWidth="289.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="89.0" text="End Date:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="endDateText" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="note">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <Line endX="101.0" endY="-24.000030517578125" layoutX="226.0" layoutY="398.0" startX="101.0" startY="-159.50003051757812" />
+         </children>
+      </Pane>
+      <HBox layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+         <children>
+            <Pane prefHeight="62.0" prefWidth="575.0" />
+            <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/bell.png" />
+               </image>
+               <HBox.margin>
+                  <Insets top="13.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="43.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/profile.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="10.0" top="11.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+    </children>
+</AnchorPane>

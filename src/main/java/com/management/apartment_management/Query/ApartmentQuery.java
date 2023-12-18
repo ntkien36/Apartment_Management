@@ -237,21 +237,59 @@ public class ApartmentQuery {
         }
         return status;
     }
-//    public static int getNumberOfPets() {
-//        int numberOfPets = 0;
-//        String SELECT_QUERY = "SELECT COUNT(*) AS count FROM Pets";
-//        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
-//             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY)) {
-//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-//                if (resultSet.next()) {
-//                    numberOfPets = resultSet.getInt("count");
-//                }
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error retrieving the number of pets for owner ID: " + e);
-//        }
-//        return numberOfPets;
-//    }
+    /////////////////
+   public static Apartment getApartmentByTenantID(int tenantID) {
+        Apartment apm = new Apartment();
+        String SELECT_QUERY = "SELECT *\n" +
+                "FROM apartment\n" +
+                "WHERE apartment_id = (\n" +
+                "    SELECT apartment_id\n" +
+                "    FROM tenant\n" +
+                "    WHERE tenant_id = ?\n" +
+                ");";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, tenantID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int ID = resultSet.getInt("apartment_id");
+                    int number = resultSet.getInt("apartment_number");
+                    int size = resultSet.getInt("size");
+                    int rent = resultSet.getInt("rent");
+                    int buildingID = resultSet.getInt("building_id");
+                    apm = new Apartment(ID, number, size, rent, buildingID);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving pets for tenant ID: " + tenantID, e);
+        }
+        return apm;
+    }
+    public static String getBuildingNameByApartmentID(int apartmentID) {
+        String building_name="";
+        String SELECT_QUERY = "SELECT b.name\n" +
+                "FROM building b\n" +
+                "JOIN apartment a ON b.building_id = a.building_id\n" +
+                "WHERE a.apartment_id = ?;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, apartmentID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    building_name = resultSet.getString("name");
+
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for apartment ID: " + apartmentID, e);
+        }
+        return building_name;
+    }
+
 //
 
 //

@@ -68,8 +68,15 @@ public class HomeController {
                     userPreferences.put("role", result.getString(4));
                     userPreferences.put("username", result.getString(2));
                     userPreferences.put("user_id", result.getString(1));
-
-                    viewUtils.changeScene(event, ADMIN_VIEW_FXML);
+                    userPreferences.put("tenant_id", result.getString(5));
+                    String role = userPreferences.get("role", "");
+                    if (role.equals("Admin")) {
+                        viewUtils.changeScene(event, ADMIN_VIEW_FXML);
+                    }
+                    if (role.equals("Tenant")) {
+                        viewUtils.changeScene(event, USER_VIEW_FXML);
+                    }
+//                    viewUtils.changeScene(event, ADMIN_VIEW_FXML);
                 }   else {
 //                    createDialog(
 //                            Alert.AlertType.ERROR,

@@ -148,6 +148,33 @@ public class PaymentQuery {
         }
         return endDate;
     }
+    public static List<Payment> getPaymentByTenantID(int tenantID) {
+        List<Payment> pays = new ArrayList<>();
+        String SELECT_QUERY = "SELECT p.payment_id, p.amount, p.payment_date, c.notes\n" +
+                "                FROM payment p\n" +
+                "                JOIN contract c ON p.contract_id = c.contract_id\n"  +
+                "                JOIN tenant t ON c.tenant_id = t.tenant_id\n"  +
+                "                WHERE t.tenant_id = ?;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, tenantID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int ID = resultSet.getInt("payment_id");
+                    int amount = resultSet.getInt("amount");
+                    Date paymentDate = resultSet.getDate("payment_date");
+                    String  note = resultSet.getString("notes");
+                    Payment p = new Payment(ID, note, amount, paymentDate);
+                    pays.add(p);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for tenant ID: " + tenantID, e);
+        }
+        return pays;
+    }
 
 
 //    public static List<Tenant> getTenantDetailByTenantID(int tenantID) {
