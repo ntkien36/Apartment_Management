@@ -29,6 +29,7 @@ import com.management.apartment_management.Utils.ViewUtils;
 
 import static com.management.apartment_management.Constants.DBConstants.*;
 import static com.management.apartment_management.Constants.FXMLConstants.*;
+import static com.management.apartment_management.Constants.FXMLConstants.REPORT_VIEW_FXML;
 
 public class AdminController implements Initializable {
     @FXML
@@ -147,20 +148,11 @@ public class AdminController implements Initializable {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
         if (role.equals("Tenant")) {
-//            viewUtils.changeAnchorPane(basePane, REPORT_VIEW_FXML);
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(REPORT_VIEW_FXML));
-//            Node node = fxmlLoader.load();
-//            basePane.getChildren().setAll(node);
-//            UserReportController reportController = fxmlLoader.getController();
-//            String tenantID = pre.get("tenant_id", "");
-//            System.out.println(tenantID);
-//            reportController.setTenantID(Integer.parseInt(tenantID));
-//            reportController.reportVbox();
+            viewUtils.changeAnchorPane(basePane, REPORT_VIEW_FXML);
         }
-//        if (role.equals("admin")) {
-//            viewUtils.changeAnchorPane(basePane, OWNER_VIEW_FXML);
-
-//        }
+        if (role.equals("Admin")) {
+            viewUtils.changeAnchorPane(basePane, REPORT_VIEW_FXML);
+        }
     }
 
     @FXML

@@ -65,7 +65,7 @@ public class SettingController {
     @FXML
     void updateUsername(ActionEvent event) {
         String updatedUsername = this.usernameText.getText();
-        if (UserQuery.updatePass(updatedUsername, id) == 1) {
+        if (UserQuery.updateUsername(updatedUsername, id) == 1) {
             this.log.setText("Update successfully!");
             this.log.setFill(javafx.scene.paint.Color.GREEN);
         } else {

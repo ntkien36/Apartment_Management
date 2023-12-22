@@ -86,8 +86,8 @@ public class UserController implements Initializable {
             popupController.setApartment(apartment);
 //                popupController.setApartment(apartment);
                 popupController.setBuilding(ApartmentQuery.getBuildingNameByApartmentID(apartment.getID()));
-                popupController.setStartDate(TenantQuery.getStartDateByTenantID(apartment.getID()));
-                popupController.setEndDate(TenantQuery.getEndDateByTenantID(apartment.getID()));
+                popupController.setStartDate(TenantQuery.getStartDateByTenantID(Integer.parseInt(pre.get("tenant_id", ""))));
+                popupController.setEndDate(TenantQuery.getEndDateByTenantID(Integer.parseInt(pre.get("tenant_id", ""))));
             popupController.setNumber(Integer.toString(apartment.getNumber()));
             popupController.setSize(Integer.toString(apartment.getSize()));
             popupController.setRent(Integer.toString(apartment.getRent()));

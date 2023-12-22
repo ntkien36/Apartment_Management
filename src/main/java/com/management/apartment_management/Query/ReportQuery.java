@@ -34,7 +34,7 @@ public class ReportQuery {
         }
         return rps;
     }
-    public static int addReport(Report r) throws SQLException {
+    public static int addReportUser(Report r) throws SQLException {
         int maxBuildingId = 0;
         String INSERT_QUERY = "INSERT INTO report (report_id, name, description, status, create_by) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
@@ -50,5 +50,75 @@ public class ReportQuery {
             throw new RuntimeException("Error adding report: " + r, e);
         }
     }
+    public static List<Report> getReport() {
+        List<Report> reports = new ArrayList<>();
+        String SELECT_QUERY = "SELECT * FROM report";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+//            preparedStatement.setInt(1, ownerID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int ID = resultSet.getInt("report_id");
+//                    String name = resultSet.getString("name");
+                    int userID = resultSet.getInt("create_by");
+                    String content = resultSet.getString("description");
+                    String status = resultSet.getString("status");
+                    Report b = new Report(ID, userID, content, status);
+                    reports.add(b);
+                }
+            }
 
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving reports for report ID: ", e);
+        }
+        return reports;
+    }
+
+    public static int addReport(Report report) throws SQLException {
+        int maxReportId = 0;
+        String INSERT_QUERY = "INSERT INTO report (report_id, create_by, description, status) VALUES (?, ?, ?)";
+        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+             PreparedStatement preparedStatement = conn.prepareStatement(INSERT_QUERY)) {
+            preparedStatement.setInt(1, report.getId());
+            preparedStatement.setInt(2, report.getCreate_by());
+            preparedStatement.setString(3, report.getDescription());
+            preparedStatement.setString(3, report.getStatus());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error adding report: " + report, e);
+        }
+    }
+
+    public static int deleteReport(int id) {
+        String DELETE_REPORT_QUERY = "DELETE FROM report WHERE report_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+             PreparedStatement deleteReportStatement = conn.prepareStatement(DELETE_REPORT_QUERY)) {
+
+            conn.setAutoCommit(false); // Set auto-commit to false to perform a transaction
+
+            deleteReportStatement.setInt(1, id);
+            int deletedReportRows = deleteReportStatement.executeUpdate();
+
+            conn.commit(); // Commit the transaction
+
+            return deletedReportRows; // Return the minimum number of deleted rows
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting report_id: " + id, e);
+        }
+    }
+
+    public static int updateStatus(Report report, String status) {
+        String UPDATE_QUERY = "UPDATE report SET status = ? WHERE report_id = ?";
+        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+             PreparedStatement preparedStatement = conn.prepareStatement(UPDATE_QUERY)) {
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, report.getId());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error update report: " + report, e);
+        }
+    }
 }

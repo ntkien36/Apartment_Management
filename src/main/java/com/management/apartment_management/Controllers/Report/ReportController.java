@@ -1,10 +1,9 @@
 package com.management.apartment_management.Controllers.Report;
 
-import com.management.apartment_management.Controllers.Tenant.AddTenantController;
-import com.management.apartment_management.Controllers.Tenant.DetailTenantController;
 import com.management.apartment_management.HomeApplication;
+import com.management.apartment_management.Models.Report;
 import com.management.apartment_management.Models.Tenant;
-import com.management.apartment_management.Query.TenantQuery;
+import com.management.apartment_management.Query.ReportQuery;
 import com.management.apartment_management.Utils.ViewUtils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -31,10 +30,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
-import static com.management.apartment_management.Constants.FXMLConstants.TENANT_ADD_FXML;
-import static com.management.apartment_management.Constants.FXMLConstants.TENANT_DETAIL_VIEW_FXML;
+import static com.management.apartment_management.Constants.FXMLConstants.*;
+import static com.management.apartment_management.Constants.FXMLConstants.USER_REPORT_VIEW_FXML;
 import static com.management.apartment_management.Utils.Utils.createDialog;
-//import static com.management.apartment_management.Constants.FXMLConstants.TENANT_DETAIL_VIEW_FXML;
 
 public class ReportController implements Initializable {
 
@@ -43,10 +41,11 @@ public class ReportController implements Initializable {
     private AnchorPane basePane;
 
     @FXML
-    private TableColumn<Tenant, String> name, contact, status, startEndDate;
+    private TableColumn<Report, String> content;
     @FXML
-    private TableColumn<Tenant, Integer> apartmentID;
-
+    private TableColumn<Report, Integer> userID;
+    @FXML
+    private TableColumn<Report, String> status;
     @FXML
     private TableColumn indexColumn;
     @FXML
@@ -54,30 +53,49 @@ public class ReportController implements Initializable {
 
     @FXML
     private TextField search;
-    @FXML
-    private TextField filter;
 
     @FXML
-    private TableView<Tenant> table;
+    private TableView<Report> table;
     public Preferences pre = Preferences.userRoot();
 
-    private ObservableList<Tenant> tenantList = FXCollections.observableArrayList();
+
+    @FXML
+    void add(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource(REPORT_ADD_FXML));
+        try {
+            Parent root = fxmlLoader.load();
+            AddReportController popupController = fxmlLoader.getController();
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("New Report!!!");
+            popupStage.setScene(new Scene(root));
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private ObservableList<Report> reportList = FXCollections.observableArrayList();
     private static final int ROWS_PER_PAGE = 10;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tenantList = FXCollections.observableArrayList(TenantQuery.getTenant());
+        reportList = FXCollections.observableArrayList(ReportQuery.getReport());
 
-        int soDu = tenantList.size() % ROWS_PER_PAGE;
-        if (soDu != 0) pagination.setPageCount(tenantList.size() / ROWS_PER_PAGE + 1);
-        else pagination.setPageCount(tenantList.size() / ROWS_PER_PAGE);
+        int soDu = reportList.size() % ROWS_PER_PAGE;
+        if (soDu != 0) pagination.setPageCount(reportList.size() / ROWS_PER_PAGE + 1);
+        else pagination.setPageCount(reportList.size() / ROWS_PER_PAGE);
         pagination.setMaxPageIndicatorCount(5);
         pagination.setPageFactory(this::createTableView);
 
         table.setRowFactory(tv -> {
-            TableRow<Tenant> row = new TableRow<>();
+            TableRow<Report> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
+
                         detail(event);
 
                 }
@@ -85,16 +103,37 @@ public class ReportController implements Initializable {
             return row;
         });
     }
+    public void detail(MouseEvent event){
+            FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource(REPORT_DETAIL_VIEW_FXML));
+            try {
+//            Parent root = fxmlLoader.load();
+                AnchorPane root = fxmlLoader.load();
+                DetailReportController popupController = fxmlLoader.getController();
+                Report selectedReport = table.getSelectionModel().getSelectedItem();
+                popupController.setReport(selectedReport);
+                popupController.setName(selectedReport.getName());
+                popupController.setDescription(selectedReport.getDescription());
+                popupController.setStatus(selectedReport.getStatus());
+
+                AnchorPane parentPane = (AnchorPane) basePane.getParent();
+                parentPane.getChildren().setAll(root);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     private Node createTableView(int pageIndex) {
-        indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Tenant, Tenant>, ObservableValue<Tenant>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
+        indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Report, Report>, ObservableValue<Report>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
 
-        indexColumn.setCellFactory(new Callback<TableColumn<Tenant, Tenant>, TableCell<Tenant, Tenant>>() {
+        indexColumn.setCellFactory(new Callback<TableColumn<Report, Report>, TableCell<Report, Report>>() {
             @Override
-            public TableCell<Tenant, Tenant> call(TableColumn<Tenant, Tenant> param) {
-                return new TableCell<Tenant, Tenant>() {
+            public TableCell<Report, Report> call(TableColumn<Report, Report> param) {
+                return new TableCell<Report, Report>() {
                     @Override
-                    protected void updateItem(Tenant item, boolean empty) {
+                    protected void updateItem(Report item, boolean empty) {
                         super.updateItem(item, empty);
 
                         if (this.getTableRow() != null && item != null) {
@@ -107,93 +146,74 @@ public class ReportController implements Initializable {
             }
         });
         indexColumn.setSortable(false);
-        apartmentID.setCellValueFactory(new PropertyValueFactory<>("apartmentID"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        userID.setCellValueFactory(new PropertyValueFactory<>("create_by"));
+        content.setCellValueFactory(new PropertyValueFactory<>("description"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        contact.setCellValueFactory(new PropertyValueFactory<>("contact"));
-        startEndDate.setCellValueFactory(new PropertyValueFactory<>("startEndDate"));
-
 //        nServices.setCellValueFactory(cellData -> {
 //            int id = cellData.getValue().getId();
 //            return new ReadOnlyObjectWrapper<>(ServiceService.getNumberOfServicesByOwnerID(id)).asString();
 //        });
 
         int lastIndex = 0;
-        int displace = tenantList.size() % ROWS_PER_PAGE;
+        int displace = reportList.size() % ROWS_PER_PAGE;
         if (displace > 0) {
-            lastIndex = tenantList.size() / ROWS_PER_PAGE;
+            lastIndex = reportList.size() / ROWS_PER_PAGE;
         } else {
-            lastIndex = tenantList.size() / ROWS_PER_PAGE - 1;
+            lastIndex = reportList.size() / ROWS_PER_PAGE - 1;
         }
-        if (tenantList.isEmpty()) table.setItems(tenantList);
+        if (reportList.isEmpty()) table.setItems(reportList);
         else {
             if (lastIndex == pageIndex && displace > 0) {
-                table.setItems(FXCollections.observableArrayList(tenantList.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + displace)));
+                table.setItems(FXCollections.observableArrayList(reportList.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + displace)));
             } else {
-                table.setItems(FXCollections.observableArrayList(tenantList.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + ROWS_PER_PAGE)));
+                table.setItems(FXCollections.observableArrayList(reportList.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + ROWS_PER_PAGE)));
             }
         }
         return table;
     }
-
     @FXML
-    void add(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource(TENANT_ADD_FXML));
-        try {
-            Parent root = fxmlLoader.load();
-            AddTenantController popupController = fxmlLoader.getController();
-
-            Stage popupStage = new Stage();
-            popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("New Tenant!!!");
-            popupStage.setScene(new Scene(root));
-            popupStage.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    void delete(ActionEvent event) {
+        Report selectedReport = table.getSelectionModel().getSelectedItem();
+        if(selectedReport == null) {
+            createDialog(Alert.AlertType.WARNING,
+                    "Warning",
+                    "Please select 1 report to continue", "");
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm delete report");
+            alert.setContentText("You want to delete this report?");
+            ButtonType okButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+            alert.getButtonTypes().setAll(okButton, noButton);
+            alert.showAndWait().ifPresent(type -> {
+                if (type == okButton) {
+                    int ID = selectedReport.getId();
+                    int res = ReportQuery.deleteReport(ID);
+                    if (res == 1) {
+                        createDialog(Alert.AlertType.WARNING, "Notification", "Delete successfully!", "");
+                    } else {
+                        createDialog(Alert.AlertType.WARNING, "Notification", "Error, try again later!", "");
+                    }
+                }
+            });
         }
 
     }
-
-    public void detail(MouseEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource(TENANT_DETAIL_VIEW_FXML));
-        try {
-//            Parent root = fxmlLoader.load();
-            AnchorPane root = fxmlLoader.load();
-            DetailTenantController popupController = fxmlLoader.getController();
-            Tenant selectedTenant = table.getSelectionModel().getSelectedItem();
-            popupController.setTenant(selectedTenant);
-            popupController.setName(selectedTenant.getName());
-            popupController.setContact(selectedTenant.getContact());
-            popupController.setStatus(selectedTenant.getStatus());
-            popupController.setStartEndDate(selectedTenant.getStartEndDate());
-            popupController.setApartmentID(Integer.toString(selectedTenant.getApartmentID()));
-            popupController.setNumber(Integer.toString(TenantQuery.getApartmentNumberByTenantID(selectedTenant.getId())));
-            popupController.setBuildingName(TenantQuery.getBuildingNameByTenantID(selectedTenant.getId()));
-//            popupController.tenant = selectedTenant;
-//            popupController.setApartmentview();
-
-            AnchorPane parentPane = (AnchorPane) basePane.getParent();
-            parentPane.getChildren().setAll(root);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
-    void search() {
-        FilteredList<Tenant> filteredData = new FilteredList<>(tenantList, b -> true);
+    void search(MouseEvent event) {
+
+        FilteredList<Report> filteredData = new FilteredList<>(reportList, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(person -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-                String lowerCaseFilter = search.getText().toLowerCase();
-                if (person.getName().toLowerCase().contains(lowerCaseFilter)) {
+                String lowerCaseFilter = search.getText();
+                if (person.getDescription().contains(lowerCaseFilter)) {
                     return true;
-                } else {
+                }
+                else {
                     return false;
                 }
             });
@@ -202,14 +222,14 @@ public class ReportController implements Initializable {
             else pagination.setPageCount(filteredData.size() / ROWS_PER_PAGE);
             pagination.setMaxPageIndicatorCount(5);
             pagination.setPageFactory(pageIndex->{
-                indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Tenant, Tenant>, ObservableValue<Tenant>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
+                indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Report, Report>, ObservableValue<Report>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
 
-                indexColumn.setCellFactory(new Callback<TableColumn<Tenant, Tenant>, TableCell<Tenant, Tenant>>() {
+                indexColumn.setCellFactory(new Callback<TableColumn<Report, Report>, TableCell<Report, Report>>() {
                     @Override
-                    public TableCell<Tenant, Tenant> call(TableColumn<Tenant, Tenant> param) {
-                        return new TableCell<Tenant, Tenant>() {
+                    public TableCell<Report, Report> call(TableColumn<Report, Report> param) {
+                        return new TableCell<Report, Report>() {
                             @Override
-                            protected void updateItem(Tenant item, boolean empty) {
+                            protected void updateItem(Report item, boolean empty) {
                                 super.updateItem(item, empty);
 
                                 if (this.getTableRow() != null && item != null) {
@@ -222,11 +242,10 @@ public class ReportController implements Initializable {
                     }
                 });
                 indexColumn.setSortable(false);
-                apartmentID.setCellValueFactory(new PropertyValueFactory<>("apartmentID"));
-                name.setCellValueFactory(new PropertyValueFactory<>("name"));
+                userID.setCellValueFactory(new PropertyValueFactory<>("create_by"));
+                content.setCellValueFactory(new PropertyValueFactory<>("description"));
                 status.setCellValueFactory(new PropertyValueFactory<>("status"));
-                contact.setCellValueFactory(new PropertyValueFactory<>("contact"));
-                startEndDate.setCellValueFactory(new PropertyValueFactory<>("startEndDate"));
+
                 int lastIndex = 0;
                 int displace = filteredData.size() % ROWS_PER_PAGE;
                 if (displace > 0) {
@@ -247,94 +266,57 @@ public class ReportController implements Initializable {
         });
 
     }
-
-    private boolean isFilterVisible = false;
-//    @FXML
-//    void filtering(ActionEvent event) throws IOException {
-//        isFilterVisible = !isFilterVisible;
-//        filter.setVisible(isFilterVisible);
-//    }
     @FXML
     void filter() {
-        FilteredList<Tenant> filteredData = new FilteredList<>(tenantList, b -> true);
-        filteredData.setPredicate(person -> person.getStatus().equals("ACTIVE"));
-            int soDu = filteredData.size() % ROWS_PER_PAGE;
-            if (soDu != 0) pagination.setPageCount(filteredData.size() / ROWS_PER_PAGE + 1);
-            else pagination.setPageCount(filteredData.size() / ROWS_PER_PAGE);
-            pagination.setMaxPageIndicatorCount(5);
-            pagination.setPageFactory(pageIndex->{
-                indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Tenant, Tenant>, ObservableValue<Tenant>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
+        FilteredList<Report> filteredData = new FilteredList<>(reportList, b -> true);
+        filteredData.setPredicate(person -> person.getStatus().equals("DISAPPROVED"));
+        int soDu = filteredData.size() % ROWS_PER_PAGE;
+        if (soDu != 0) pagination.setPageCount(filteredData.size() / ROWS_PER_PAGE + 1);
+        else pagination.setPageCount(filteredData.size() / ROWS_PER_PAGE);
+        pagination.setMaxPageIndicatorCount(5);
+        pagination.setPageFactory(pageIndex->{
+            indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Report, Report>, ObservableValue<Tenant>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
 
-                indexColumn.setCellFactory(new Callback<TableColumn<Tenant, Tenant>, TableCell<Tenant, Tenant>>() {
-                    @Override
-                    public TableCell<Tenant, Tenant> call(TableColumn<Tenant, Tenant> param) {
-                        return new TableCell<Tenant, Tenant>() {
-                            @Override
-                            protected void updateItem(Tenant item, boolean empty) {
-                                super.updateItem(item, empty);
+            indexColumn.setCellFactory(new Callback<TableColumn<Report, Report>, TableCell<Report, Report>>() {
+                @Override
+                public TableCell<Report, Report> call(TableColumn<Report, Report> param) {
+                    return new TableCell<Report, Report>() {
+                        @Override
+                        protected void updateItem(Report item, boolean empty) {
+                            super.updateItem(item, empty);
 
-                                if (this.getTableRow() != null && item != null) {
-                                    setText(this.getTableRow().getIndex() + 1 + pageIndex * ROWS_PER_PAGE + "");
-                                } else {
-                                    setText("");
-                                }
+                            if (this.getTableRow() != null && item != null) {
+                                setText(this.getTableRow().getIndex() + 1 + pageIndex * ROWS_PER_PAGE + "");
+                            } else {
+                                setText("");
                             }
-                        };
-                    }
-                });
-                indexColumn.setSortable(false);
-                apartmentID.setCellValueFactory(new PropertyValueFactory<>("apartmentID"));
-                name.setCellValueFactory(new PropertyValueFactory<>("name"));
-                status.setCellValueFactory(new PropertyValueFactory<>("status"));
-                contact.setCellValueFactory(new PropertyValueFactory<>("contact"));
-                startEndDate.setCellValueFactory(new PropertyValueFactory<>("startEndDate"));
-                int lastIndex = 0;
-                int displace = filteredData.size() % ROWS_PER_PAGE;
-                if (displace > 0) {
-                    lastIndex = filteredData.size() / ROWS_PER_PAGE;
-                } else {
-                    lastIndex = filteredData.size() / ROWS_PER_PAGE - 1;
-                }
-                if (filteredData.isEmpty()) table.setItems(FXCollections.observableArrayList(filteredData));
-                else {
-                    if (lastIndex == pageIndex && displace > 0) {
-                        table.setItems(FXCollections.observableArrayList(filteredData.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + displace)));
-                    } else {
-                        table.setItems(FXCollections.observableArrayList(filteredData.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + ROWS_PER_PAGE)));
-                    }
-                }
-                return table;
-            });
-//        });
-    }
-    @FXML
-    void delete(ActionEvent event) {
-        Tenant selectedTenant = table.getSelectionModel().getSelectedItem();
-        if(selectedTenant == null) {
-            createDialog(Alert.AlertType.WARNING,
-                    "Warning",
-                    "Please select 1 tenant to continue", "");
-        }
-        else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirm delete tenant");
-            alert.setContentText("You want to delete this tenant?");
-            ButtonType okButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-            ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
-            alert.getButtonTypes().setAll(okButton, noButton);
-            alert.showAndWait().ifPresent(type -> {
-                if (type == okButton) {
-                    int ID = selectedTenant.getId();
-                    int res = TenantQuery.deleteTenant(ID);
-                    if (res == 1) {
-                        createDialog(Alert.AlertType.WARNING, "Notification", "Delete successfully!", "");
-                    } else {
-                        createDialog(Alert.AlertType.WARNING, "Notification", "Error, try again later!", "");
-                    }
+                        }
+                    };
                 }
             });
-        }
+            indexColumn.setSortable(false);
+            userID.setCellValueFactory(new PropertyValueFactory<>("create_by"));
+            content.setCellValueFactory(new PropertyValueFactory<>("description"));
+            status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
+            int lastIndex = 0;
+            int displace = filteredData.size() % ROWS_PER_PAGE;
+            if (displace > 0) {
+                lastIndex = filteredData.size() / ROWS_PER_PAGE;
+            } else {
+                lastIndex = filteredData.size() / ROWS_PER_PAGE - 1;
+            }
+            if (filteredData.isEmpty()) table.setItems(FXCollections.observableArrayList(filteredData));
+            else {
+                if (lastIndex == pageIndex && displace > 0) {
+                    table.setItems(FXCollections.observableArrayList(filteredData.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + displace)));
+                } else {
+                    table.setItems(FXCollections.observableArrayList(filteredData.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + ROWS_PER_PAGE)));
+                }
+            }
+            return table;
+        });
+//        });
     }
 }
 

@@ -24,6 +24,20 @@ public class Report {
         this.description = description;
         this.status = status;
     }
+    public Report(int id, int create_by, String description, String status) {
+        this.id = id;
+        this.create_by = create_by;
+        this.description = description;
+        this.status = status;
+    }
+
+//    public Report(int id, String name, int create_by, String description, String status) {
+//        this.id = id;
+//        this.name = name;
+//        this.create_by = create_by;
+//        this.description = description;
+//        this.status = status;
+//    }
 
     public int getId() {
         return id;

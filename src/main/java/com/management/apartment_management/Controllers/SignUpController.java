@@ -38,6 +38,7 @@ public class SignUpController implements Initializable {
 
     public void handleSignUp() {
         String SELECT_QUERY = "SELECT MAX(user_id) FROM user";
+        String TENANT_QUERY = "SELECT MAX(tenant_id) FROM tenant";
         String inputUsername = signUpUsername.getText();
         String inputPassword = signUpPassword.getText();
         String reInputPassword = ReSignUpPassword.getText();
@@ -62,9 +63,21 @@ public class SignUpController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            int maxTenantId = 0;
+            try {
+                Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+                PreparedStatement selectStatement = conn.prepareStatement(SELECT_QUERY);
+                ResultSet resultSet = selectStatement.executeQuery();
+                if (resultSet.next()) {
+                    maxTenantId = resultSet.getInt(1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             String CREATE_QUERY = "INSERT INTO user (username, password, role, user_id) VALUES (?,?,?,?)";
             try {
                 int nextUserId = maxUserId + 1;
+                int nextTenantId = maxTenantId +1;
                 Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
                 PreparedStatement preparedStatement = conn.prepareStatement(CREATE_QUERY);
                 preparedStatement.setString(1, inputUsername);

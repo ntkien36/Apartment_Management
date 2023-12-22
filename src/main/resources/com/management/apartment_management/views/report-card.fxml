@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="74.0" prefWidth="606.0" style="-fx-background-color: #D8DEE9; -fx-border-radius: 10px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Report.ReportCardController">
+<AnchorPane prefHeight="74.0" prefWidth="606.0" style="-fx-background-color: #D8DEE9; -fx-border-radius: 10px; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Report.ReportCardController">
    <children>
       <Button fx:id="reportButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="606.0" style="-fx-background-color: transparent;">
          <graphic>

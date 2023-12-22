@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Apartment.ApartmentDetailController">
+<AnchorPane fx:id="basePane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Apartment.ApartmentDetailController">
     <children>
         <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
             <children>
@@ -116,7 +116,7 @@
             </graphic>
         </Button>
         <Text fx:id="log" layoutX="522.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="121.60000000000014" />
-        <Button layoutX="32.0" layoutY="86.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+        <Button layoutX="32.0" layoutY="86.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" text="&lt;=" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>

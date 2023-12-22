@@ -27,5 +27,7 @@ public class FXMLConstants {
     public static String USER_PAYMENT_VIEW_FXML = "/com/management/apartment_management/views/user-payment-view.fxml";
     public static String USER_REPORT_ADD_VIEW_FXML = "/com/management/apartment_management/views/user-report-add-view.fxml";
     public static String USER_SETTING_VIEW_FXML = "/com/management/apartment_management/views/user-setting-view.fxml";
-
+    public static String REPORT_ADD_FXML = "/com/management/apartment_management/views/report-add-view.fxml";
+    public static String REPORT_VIEW_FXML = "/com/management/apartment_management/views/report-view.fxml";
+    public static String REPORT_DETAIL_VIEW_FXML = "/com/management/apartment_management/views/report-detail-view.fxml";
 }
