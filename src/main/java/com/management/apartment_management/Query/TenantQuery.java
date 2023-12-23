@@ -202,6 +202,17 @@ public class TenantQuery {
             throw new RuntimeException("Error update tenant: " + tenant, e);
         }
     }
+    public static int updateName(Tenant tenant, String name) {
+        String UPDATE_QUERY = "UPDATE tenant SET name = ? WHERE tenant_id = ?";
+        try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+             PreparedStatement preparedStatement = conn.prepareStatement(UPDATE_QUERY)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, tenant.getId());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error update tenant: " + tenant, e);
+        }
+    }
     public static int updatecontact(Tenant tenant, String contact) {
         String UPDATE_QUERY = "UPDATE tenant SET contact = ? WHERE tenant_id = ?";
         try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);

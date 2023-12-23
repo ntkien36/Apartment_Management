@@ -93,11 +93,11 @@
                   <Image url="@../icons/bussiness-man.png" />
                </image>
             </ImageView>
-              <Text fx:id="nameText" layoutX="480.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenant" textAlignment="CENTER" wrappingWidth="159.19997558593764">
-                  <font>
-                      <Font name="System Bold" size="24.0" />
-                  </font>
-              </Text>
+            <TextField fx:id="nameText" alignment="CENTER" layoutX="480.0" layoutY="198.0" prefHeight="43.0" prefWidth="159.0" promptText="Tenant" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </TextField>
          </children>
       </Pane>
       <HBox layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">

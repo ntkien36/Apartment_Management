@@ -66,7 +66,7 @@ public class SignUpController implements Initializable {
             int maxTenantId = 0;
             try {
                 Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
-                PreparedStatement selectStatement = conn.prepareStatement(SELECT_QUERY);
+                PreparedStatement selectStatement = conn.prepareStatement(TENANT_QUERY);
                 ResultSet resultSet = selectStatement.executeQuery();
                 if (resultSet.next()) {
                     maxTenantId = resultSet.getInt(1);
@@ -74,17 +74,21 @@ public class SignUpController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            String CREATE_QUERY = "INSERT INTO user (username, password, role, user_id) VALUES (?,?,?,?)";
+            String CREATE_QUERY = "INSERT INTO user (username, password, role, user_id, tenant_id) VALUES (?,?,?,?,?);";
+            String CREATE_QUERY_1 = "INSERT INTO tenant (tenant_id) VALUES (?);";
             try {
                 int nextUserId = maxUserId + 1;
                 int nextTenantId = maxTenantId +1;
                 Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
                 PreparedStatement preparedStatement = conn.prepareStatement(CREATE_QUERY);
+                PreparedStatement preparedStatement1 = conn.prepareStatement(CREATE_QUERY_1);
                 preparedStatement.setString(1, inputUsername);
                 preparedStatement.setString(2, inputPassword);
                 preparedStatement.setString(3, "Tenant");
                 preparedStatement.setInt(4, nextUserId);
-                int result = preparedStatement.executeUpdate();
+                preparedStatement.setInt(5, nextTenantId);
+                preparedStatement1.setInt(1, nextTenantId);
+                int result = Math.max(preparedStatement.executeUpdate(), preparedStatement1.executeUpdate());
                 if (result == 1) {
                     signUpPassword.clear();
                     signUpUsername.clear();

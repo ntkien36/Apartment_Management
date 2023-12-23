@@ -48,7 +48,7 @@ public class DetailTenantController implements Initializable {
     private TextField filter;
 
     @FXML
-    public Text nameText;
+    public TextField nameText;
 
     @FXML
     public TextField numberText;
@@ -82,6 +82,7 @@ public class DetailTenantController implements Initializable {
 //        String updatedType = this.typeChoice.getValue();
         String updatedStatus = this.statusText.getText();
         String updatedcontact = this.contactText.getText();
+        String updatedName = this.nameText.getText();
 
         if(TenantQuery.updateStatus(this.tenant, updatedStatus) == 1) {
             this.log.setText("Update successfully!");
@@ -91,6 +92,13 @@ public class DetailTenantController implements Initializable {
             this.log.setFill(Color.RED);
         }
         if(TenantQuery.updatecontact(this.tenant, updatedcontact) == 1) {
+            this.log.setText("Update successfully!");
+            this.log.setFill(javafx.scene.paint.Color.GREEN);
+        } else {
+            this.log.setText("Update failed!");
+            this.log.setFill(Color.RED);
+        }
+        if(TenantQuery.updateName(this.tenant, updatedName) == 1) {
             this.log.setText("Update successfully!");
             this.log.setFill(javafx.scene.paint.Color.GREEN);
         } else {
