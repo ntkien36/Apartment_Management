@@ -69,8 +69,8 @@ public class ApartmentDetailController implements Initializable {
     public void setNumber(String info) {numberText.setText(info);}
     public void setTenantID(String info) {tenantIDText.setText(info);}
     public void setTenantName(String info){tenantNameText.setText(info);}
-//    public void setStartEndDate(String info) {startEndDateText.setText(info);}
-//    public void setBill(String info) {billText.setText(info);}
+    public void setStartEndDate(String info) {startEndDateText.setText(info);}
+    public void setBill(String info) {billText.setText(info);}
     public void setStatus(String info){statusText.setText(info);}
 
 
@@ -82,11 +82,11 @@ public class ApartmentDetailController implements Initializable {
     void onUpdate(ActionEvent event) {
 //        String updatedType = this.typeChoice.getValue();
         String updatedNumber = this.numberText.getText();
-        String updatedTenantID = this.tenantIDText.getText();
+//        String updatedTenantID = this.tenantIDText.getText();
 
         if(ApartmentQuery.updateNumber(this.apartment, updatedNumber) == 1) {
             this.log.setText("Update successfully!");
-            this.log.setFill(Color.GREEN);
+            this.log.setFill(javafx.scene.paint.Color.GREEN);
         } else {
             this.log.setText("Update failed!");
             this.log.setFill(Color.RED);

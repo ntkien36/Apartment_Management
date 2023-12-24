@@ -28,14 +28,20 @@
             <children>
                 <HBox prefHeight="57.0" prefWidth="267.0" spacing="10.0">
                     <children>
-                        <Label prefHeight="27.0" prefWidth="79.0" text="Tenant ID " />
-                        <TextField fx:id="userIDInput" prefHeight="26.0" prefWidth="178.0" />
+                        <Label prefHeight="27.0" prefWidth="79.0" text="Name " />
+                        <TextField fx:id="nameInput" prefHeight="26.0" prefWidth="178.0" />
                     </children>
                 </HBox>
                 <HBox prefHeight="57.0" prefWidth="267.0" spacing="10.0">
                     <children>
                         <Label prefHeight="27.0" prefWidth="78.0" text="Description" />
-                        <TextField fx:id="contentInput" prefHeight="26.0" prefWidth="178.0" />
+                        <TextField fx:id="descriptionInput" prefHeight="26.0" prefWidth="178.0" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="57.0" prefWidth="267.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="27.0" prefWidth="78.0" text="Tenant ID" />
+                        <TextField fx:id="create_byInput" prefHeight="26.0" prefWidth="178.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="48.0" prefWidth="267.0" spacing="30.0">

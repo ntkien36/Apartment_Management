@@ -48,7 +48,22 @@ public class SettingController {
     public void setUsername(String info) {usernameText.setText(info);}
     @FXML
     void onUpdate(ActionEvent event) {
-
+        String updatedPass = this.passText.getText();
+        String updatedUsername = this.usernameText.getText();
+        if (UserQuery.updatePass(updatedPass, id) == 1) {
+            this.log.setText("Update successfully!");
+            this.log.setFill(javafx.scene.paint.Color.GREEN);
+        } else {
+            this.log.setText("Update failed!");
+            this.log.setFill(Color.RED);
+        }
+        if (UserQuery.updateUsername(updatedUsername, id) == 1) {
+            this.log.setText("Update successfully!");
+            this.log.setFill(javafx.scene.paint.Color.GREEN);
+        } else {
+            this.log.setText("Update failed!");
+            this.log.setFill(Color.RED);
+        }
     }
     @FXML
     void updatePass(ActionEvent event) {

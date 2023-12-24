@@ -96,9 +96,9 @@ public class AdminController implements Initializable {
 //            petController.setOwnerID(Integer.parseInt(pre.get("id", "")));
 //            petController.petGrid();
 //        }
-        if (role.equals("Tenant")) {
-            viewUtils.changeAnchorPane(basePane, BUILDING_VIEW_FXML);
-        }
+//        if (role.equals("Tenant")) {
+//            viewUtils.changeAnchorPane(basePane, BUILDING_VIEW_FXML);
+//        }
         if (role.equals("Admin")) {
             viewUtils.changeAnchorPane(basePane, BUILDING_VIEW_FXML);
         }
@@ -109,9 +109,9 @@ public class AdminController implements Initializable {
     void switchToApartment(ActionEvent event) throws IOException {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
-        if (role.equals("Tenant")) {
-            viewUtils.changeAnchorPane(basePane, APARTMENT_VIEW_FXML);
-        }
+//        if (role.equals("Tenant")) {
+//            viewUtils.changeAnchorPane(basePane, APARTMENT_VIEW_FXML);
+//        }
         if (role.equals("Admin")) {
             viewUtils.changeAnchorPane(basePane, APARTMENT_VIEW_FXML);
         }
@@ -122,9 +122,9 @@ public class AdminController implements Initializable {
     void switchToContract(ActionEvent event) throws IOException {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
-        if (role.equals("Tenant")) {
-            viewUtils.changeAnchorPane(basePane, CONTRACT_VIEW_FXML);
-        }
+//        if (role.equals("Tenant")) {
+//            viewUtils.changeAnchorPane(basePane, CONTRACT_VIEW_FXML);
+//        }
         if (role.equals("Admin")) {
             viewUtils.changeAnchorPane(basePane, CONTRACT_VIEW_FXML);
         }
@@ -135,9 +135,9 @@ public class AdminController implements Initializable {
     void switchToPayment(ActionEvent event) throws IOException {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
-        if (role.equals("Tenant")) {
-            viewUtils.changeAnchorPane(basePane, PAYMENT_VIEW_FXML);
-        }
+//        if (role.equals("Tenant")) {
+//            viewUtils.changeAnchorPane(basePane, PAYMENT_VIEW_FXML);
+//        }
         if (role.equals("Admin")) {
             viewUtils.changeAnchorPane(basePane, PAYMENT_VIEW_FXML);
         }
@@ -147,9 +147,9 @@ public class AdminController implements Initializable {
     void switchToReport(ActionEvent event) throws IOException {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
-        if (role.equals("Tenant")) {
-            viewUtils.changeAnchorPane(basePane, REPORT_VIEW_FXML);
-        }
+//        if (role.equals("Tenant")) {
+//            viewUtils.changeAnchorPane(basePane, REPORT_VIEW_FXML);
+//        }
         if (role.equals("Admin")) {
             viewUtils.changeAnchorPane(basePane, REPORT_VIEW_FXML);
         }
@@ -159,9 +159,9 @@ public class AdminController implements Initializable {
     void switchToTenant(ActionEvent event) throws IOException {
         Preferences pre = Preferences.userRoot();
         String role = pre.get("role", "");
-        if (role.equals("Tenant")) {
-            viewUtils.changeAnchorPane(basePane, TENANT_VIEW_FXML);
-        }
+//        if (role.equals("Tenant")) {
+//            viewUtils.changeAnchorPane(basePane, TENANT_VIEW_FXML);
+//        }
         if (role.equals("Admin")) {
             viewUtils.changeAnchorPane(basePane, TENANT_VIEW_FXML);
         }

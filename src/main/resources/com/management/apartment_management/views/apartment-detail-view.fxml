@@ -1,82 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="basePane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.management.apartment_management.Controllers.Apartment.ApartmentDetailController">
     <children>
         <Pane layoutX="29.0" layoutY="134.0" prefHeight="498.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
             <children>
+                <HBox alignment="CENTER" layoutX="41.0" layoutY="29.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="26.0" prefWidth="177.0" text="Apartment">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <TextField fx:id="numberText" prefHeight="26.0" prefWidth="244.0" style="-fx-background-color: #ffffff;" text="number">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                    </children>
+                </HBox>
                 <HBox alignment="CENTER" layoutX="41.0" layoutY="101.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
                     <children>
-                        <Label prefHeight="26.0" prefWidth="154.0" text="Tenant ID">
+                        <Label prefHeight="26.0" prefWidth="186.0" text="Tenant ID">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="System Bold" size="18.0" />
                             </font></Label>
-                        <TextField fx:id="tenantIDText" prefHeight="26.0" prefWidth="250.0" text="id" />
+                        <TextField fx:id="tenantIDText" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="tenantID">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" layoutX="41.0" layoutY="166.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
                     <children>
-                        <Label prefHeight="26.0" prefWidth="146.0" text="Name of Tentant ">
+                        <Label prefHeight="26.0" prefWidth="195.0" text="Name of Tentant ">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="System Bold" size="18.0" />
                             </font>
-                  </Label>
-                        <TextField fx:id="contactText" prefHeight="26.0" prefWidth="257.0" text="name" />
+                        </Label>
+                        <TextField fx:id="tenantNameText" prefHeight="26.0" prefWidth="257.0" style="-fx-background-color: #ffffff;" text="tenantName">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" layoutX="41.0" layoutY="316.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
                     <children>
-                        <Label prefHeight="26.0" prefWidth="174.0" text="Bill">
+                        <Label prefHeight="26.0" prefWidth="210.0" text="Bill">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="System Bold" size="18.0" />
                             </font></Label>
-                        <TextField fx:id="apartmentIDText" prefHeight="26.0" prefWidth="267.0" text="status" />
+                        <TextField fx:id="billText" prefHeight="26.0" prefWidth="267.0" style="-fx-background-color: #ffffff;" text="bill">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" layoutX="41.0" layoutY="240.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
                     <children>
-                        <Label prefHeight="26.0" prefWidth="203.0" text="Contract">
+                        <Label prefHeight="26.0" prefWidth="249.0" text="Contract">
                             <font>
-                                <Font name="System Bold" size="16.0" />
+                                <Font name="System Bold" size="18.0" />
                             </font></Label>
-                        <TextField fx:id="startEndDateText" prefHeight="26.0" prefWidth="308.0" text="date" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" layoutX="43.0" layoutY="376.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
-                    <children>
-                        <Label prefHeight="18.0" prefWidth="150.0" text="Status of Apartment">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font></Label>
-                        <TextField fx:id="numberText" prefHeight="26.0" prefWidth="244.0" text="status" />
-                    </children>
-                </HBox>
-                <ImageView fitHeight="183.0" fitWidth="169.0" layoutX="475.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/bussiness-man.png" />
-                    </image>
-                </ImageView>
-                <Text fx:id="nameText" layoutX="480.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenant" textAlignment="CENTER" wrappingWidth="159.19997558593764">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
-                </Text>
-            <HBox alignment="CENTER" layoutX="41.0" layoutY="26.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
-               <children>
-                  <Label prefHeight="26.0" prefWidth="154.0" text="Apartment">
+                        <TextField fx:id="startEndDateText" prefHeight="26.0" prefWidth="308.0" style="-fx-background-color: #ffffff;" text="startEndDate">
                      <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="statusText1" prefHeight="26.0" prefWidth="250.0" text="number" />
-               </children>
-            </HBox>
+                        <Font size="18.0" />
+                     </font></TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="41.0" layoutY="378.0" prefHeight="45.0" prefWidth="404.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="27.0" prefWidth="199.0" text="Status of Apartment">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <TextField fx:id="statusText" prefHeight="26.0" prefWidth="244.0" style="-fx-background-color: #ffffff;" text="status">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                    </children>
+                </HBox>
             </children>
         </Pane>
         <HBox layoutX="32.0" layoutY="14.0" prefHeight="62.0" prefWidth="658.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
@@ -103,29 +115,28 @@
                 <Insets />
             </opaqueInsets>
         </HBox>
-        <Button layoutX="650.0" layoutY="86.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+        <Button layoutX="644.0" layoutY="86.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>
             <graphic>
                 <ImageView fitHeight="20.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/edit.png" />
-                    </image>
-                </ImageView>
+               <image>
+                  <Image url="@../icons/edit.png" />
+               </image>
+            </ImageView>
             </graphic>
         </Button>
         <Text fx:id="log" layoutX="522.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="121.60000000000014" />
-        <Button layoutX="32.0" layoutY="86.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" text="&lt;=" textFill="WHITE">
+        <Button layoutX="32.0" layoutY="86.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>
             <graphic>
                 <ImageView fitHeight="20.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/left.png" />
-                    </image>
-                </ImageView>
+               <image>
+                  <Image url="@../icons/left.png" />
+               </image></ImageView>
             </graphic>
         </Button>
     </children>

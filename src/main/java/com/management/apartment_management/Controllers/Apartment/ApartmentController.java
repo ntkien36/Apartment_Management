@@ -124,15 +124,9 @@ public class ApartmentController implements Initializable {
             popupController.setNumber(Integer.toString(selectedApartment.getNumber()));
             popupController.setTenantID(Integer.toString(ApartmentQuery.getTenantIDByApartmentID(selectedApartment.getID())));
             popupController.setTenantName(ApartmentQuery.getTenantNameByApartmentID(selectedApartment.getID()));
-//            popupController.setStartEndDate(Integer.toString(selectedApartment.getStartEndDate()));
-//            popupController.setBill(selectedApartment.getBill());
+            popupController.setStartEndDate(ApartmentQuery.getStartEndDateByApartmentID(selectedApartment.getID()));
+            popupController.setBill(ApartmentQuery.getBillByApartmentID(selectedApartment.getID()));
             popupController.setStatus(ApartmentQuery.getStatusByApartmentID(selectedApartment.getID()));
-
-//            popupController.setApartmentID(Integer.toString(selectedApartment.getApartmentID()));
-//            popupController.setNumber(Integer.toString(ApartmentQuery.getApartmentNumberByApartmentID(selectedApartment.getID())));
-//            popupController.setBuildingName(ApartmentQuery.getBuildingNameByApartmentID(selectedApartment.getID()));
-//            popupController.apartment = selectedApartment;
-//            popupController.setApartmentview();
 
             AnchorPane parentPane = (AnchorPane) basePane.getParent();
             parentPane.getChildren().setAll(root);

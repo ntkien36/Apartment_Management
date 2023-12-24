@@ -17,10 +17,12 @@ import static com.management.apartment_management.Constants.DBConstants.*;
 public class AddReportController implements Initializable {
 
     @FXML
-    private TextField userIDInput;
+    private TextField nameInput;
 
     @FXML
-    private TextField contentInput;
+    private TextField descriptionInput;
+    @FXML
+    private TextField create_byInput;
 
     @FXML
     private Text stage;
@@ -28,7 +30,7 @@ public class AddReportController implements Initializable {
     @FXML
     void addReport(ActionEvent event) throws SQLException {
         int maxReportId = 0;
-        String SELECT_QUERY = "SELECT MAX(id) FROM report";
+        String SELECT_QUERY = "SELECT MAX(report_id) FROM report";
         try {
             Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
             PreparedStatement selectStatement = conn.prepareStatement(SELECT_QUERY);
@@ -40,15 +42,16 @@ public class AddReportController implements Initializable {
             e.printStackTrace();
         }
         int nextReportId = maxReportId + 1;
-        String userID1 = userIDInput.getText();
-        String content1 = contentInput.getText();
+        String name1 = nameInput.getText();
+        String description1 = descriptionInput.getText();
         String status = "DISAPPROVED";
-        if (content1 == null || userID1 == null) {
+        String create_by1 = create_byInput.getText();
+        if (name1 == null || description1 == null || create_by1 == null) {
             stage.setText("Please fill all the fields");
         }
         else {
-            int userID = Integer.parseInt(userID1);
-            Report report = new Report(nextReportId, userID, content1, status);
+            int create_by = Integer.parseInt(create_by1);
+            Report report = new Report(nextReportId, name1, description1, status, create_by);
             int res = ReportQuery.addReport(report);
             if (res == 1) {
                 stage.setText("Report added successfully!");

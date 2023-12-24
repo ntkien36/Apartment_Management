@@ -22,9 +22,10 @@
                 <TableView fx:id="table" layoutX="16.0" layoutY="83.0" prefHeight="370.0" prefWidth="630.0" stylesheets="@../styles/table.css">
                     <columns>
                         <TableColumn fx:id="indexColumn" prefWidth="33.0" text="#" />
-                        <TableColumn fx:id="userID" prefWidth="195.19996643066406" text="User ID" />
-                        <TableColumn fx:id="content" prefWidth="243.20004272460938" text="Content" />
-                  <TableColumn fx:id="status" prefWidth="157.5999755859375" text="Status" />
+                        <TableColumn fx:id="create_by" prefWidth="68.00006866455078" text="Created by" />
+                        <TableColumn fx:id="status" prefWidth="93.60003662109375" text="Status" />
+                        <TableColumn fx:id="name" minWidth="0.0" prefWidth="153.5999755859375" text="Name" />
+                        <TableColumn fx:id="description" prefWidth="277.5999450683594" text="Description" />
                     </columns>
                 </TableView>
             </children>

@@ -41,7 +41,7 @@ public class DetailReportController implements Initializable {
     public TextField nameText;
 
     @FXML
-    public TextField descriptionText;
+    public TextArea descriptionText;
 
     @FXML
     public TextField startEndDateText;
@@ -56,7 +56,10 @@ public class DetailReportController implements Initializable {
         this.report = report;
     }
     public void setName(String info) {nameText.setText(info);}
-    public void setDescription(String info) {descriptionText.setText(info);}
+    public void setDescription(String info) {
+        descriptionText.setWrapText(true);
+        descriptionText.setText(info);
+    }
     public void setStatus(String info) {statusText.setText(info);}
 
     @FXML

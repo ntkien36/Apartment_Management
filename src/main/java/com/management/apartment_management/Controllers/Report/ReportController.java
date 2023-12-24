@@ -41,11 +41,13 @@ public class ReportController implements Initializable {
     private AnchorPane basePane;
 
     @FXML
-    private TableColumn<Report, String> content;
+    private TableColumn<Report, String> description;
     @FXML
-    private TableColumn<Report, Integer> userID;
+    private TableColumn<Report, Integer> create_by;
     @FXML
     private TableColumn<Report, String> status;
+    @FXML
+    private TableColumn<Report, String> name;
     @FXML
     private TableColumn indexColumn;
     @FXML
@@ -96,7 +98,7 @@ public class ReportController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
 
-                        detail(event);
+                    detail(event);
 
                 }
             });
@@ -104,26 +106,27 @@ public class ReportController implements Initializable {
         });
     }
     public void detail(MouseEvent event){
-            FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource(REPORT_DETAIL_VIEW_FXML));
-            try {
+        FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource(REPORT_DETAIL_VIEW_FXML));
+        try {
 //            Parent root = fxmlLoader.load();
-                AnchorPane root = fxmlLoader.load();
-                DetailReportController popupController = fxmlLoader.getController();
-                Report selectedReport = table.getSelectionModel().getSelectedItem();
-                popupController.setReport(selectedReport);
-                popupController.setName(selectedReport.getName());
-                popupController.setDescription(selectedReport.getDescription());
-                popupController.setStatus(selectedReport.getStatus());
+            AnchorPane root = fxmlLoader.load();
+            DetailReportController popupController = fxmlLoader.getController();
+            Report selectedReport = table.getSelectionModel().getSelectedItem();
 
-                AnchorPane parentPane = (AnchorPane) basePane.getParent();
-                parentPane.getChildren().setAll(root);
+            popupController.setReport(selectedReport);
+            popupController.setName(selectedReport.getName());
+            popupController.setDescription(selectedReport.getDescription());
+            popupController.setStatus(selectedReport.getStatus());
+
+            AnchorPane parentPane = (AnchorPane) basePane.getParent();
+            parentPane.getChildren().setAll(root);
 
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+    }
 
     private Node createTableView(int pageIndex) {
         indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Report, Report>, ObservableValue<Report>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
@@ -146,9 +149,10 @@ public class ReportController implements Initializable {
             }
         });
         indexColumn.setSortable(false);
-        userID.setCellValueFactory(new PropertyValueFactory<>("create_by"));
-        content.setCellValueFactory(new PropertyValueFactory<>("description"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        create_by.setCellValueFactory(new PropertyValueFactory<>("create_by"));
 //        nServices.setCellValueFactory(cellData -> {
 //            int id = cellData.getValue().getId();
 //            return new ReadOnlyObjectWrapper<>(ServiceService.getNumberOfServicesByOwnerID(id)).asString();
@@ -242,9 +246,10 @@ public class ReportController implements Initializable {
                     }
                 });
                 indexColumn.setSortable(false);
-                userID.setCellValueFactory(new PropertyValueFactory<>("create_by"));
-                content.setCellValueFactory(new PropertyValueFactory<>("description"));
+                name.setCellValueFactory(new PropertyValueFactory<>("name"));
+                description.setCellValueFactory(new PropertyValueFactory<>("description"));
                 status.setCellValueFactory(new PropertyValueFactory<>("status"));
+                create_by.setCellValueFactory(new PropertyValueFactory<>("create_by"));
 
                 int lastIndex = 0;
                 int displace = filteredData.size() % ROWS_PER_PAGE;
@@ -295,9 +300,10 @@ public class ReportController implements Initializable {
                 }
             });
             indexColumn.setSortable(false);
-            userID.setCellValueFactory(new PropertyValueFactory<>("create_by"));
-            content.setCellValueFactory(new PropertyValueFactory<>("description"));
+            name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            description.setCellValueFactory(new PropertyValueFactory<>("description"));
             status.setCellValueFactory(new PropertyValueFactory<>("status"));
+            create_by.setCellValueFactory(new PropertyValueFactory<>("create_by"));
 
             int lastIndex = 0;
             int displace = filteredData.size() % ROWS_PER_PAGE;

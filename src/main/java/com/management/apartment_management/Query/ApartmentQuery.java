@@ -158,7 +158,7 @@ public class ApartmentQuery {
 //        }
 //    }
     public static int updateNumber(Apartment apartment, String number) {
-        String UPDATE_QUERY = "UPDATE apartment SET number = ? WHERE apartment_id = ?";
+        String UPDATE_QUERY = "UPDATE apartment SET apartment_number = ? WHERE apartment_id = ?";
         try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
              PreparedStatement preparedStatement = conn.prepareStatement(UPDATE_QUERY)) {
             preparedStatement.setString(1, number);
@@ -170,10 +170,10 @@ public class ApartmentQuery {
     }
     public static Integer getTenantIDByApartmentID(int apartmentID) {
         int tenantID = 0;
-        String SELECT_QUERY = "SELECT a.apartment_id \n" +
-                "FROM apartment a\n" +
-                "JOIN tenant t ON a.apartment_id = t.apartment_id\n" +
-                "WHERE apartment_id = ?;";
+        String SELECT_QUERY = "SELECT t.tenant_id \n" +
+                "FROM tenant as t\n" +
+                "JOIN apartment as a ON t.apartment_id = a.apartment_id\n" +
+                "WHERE a.apartment_id = ?;";
         try {
             Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
@@ -192,13 +192,10 @@ public class ApartmentQuery {
     }
     public static String getTenantNameByApartmentID(int apartmentID) {
         String tenantName="";
-        String SELECT_QUERY = "SELECT\n" +
-                "    t.name\n" +
-                "FROM\n" +
-                "    tenant t\n" +
-                "    JOIN apartment a ON t.apartment_id = a.apartment_id\n" +
-                "WHERE\n" +
-                "    a.apartment_id = ?";
+        String SELECT_QUERY = "SELECT t.name \n" +
+                "FROM tenant as t \n" +
+                "JOIN apartment as a ON a.apartment_id = t.apartment_id\n" +
+                "WHERE a.apartment_id = ?;";
         try {
             Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
@@ -217,10 +214,10 @@ public class ApartmentQuery {
     }
     public static String getStatusByApartmentID(int apartmentID) {
         String status="";
-        String SELECT_QUERY = "SELECT a.apartment_id \n" +
-                "FROM apartment a\n" +
-                "JOIN tenant t ON a.apartment_id = t.apartment_id\n" +
-                "WHERE apartment_id = ?;";
+        String SELECT_QUERY = "SELECT t.status \n" +
+                "FROM tenant t\n" +
+                "JOIN apartment a ON t.apartment_id = a.apartment_id\n" +
+                "WHERE a.apartment_id = ?;";
         try {
             Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
@@ -237,8 +234,67 @@ public class ApartmentQuery {
         }
         return status;
     }
-    /////////////////
-   public static Apartment getApartmentByTenantID(int tenantID) {
+    public static String getStartEndDateByApartmentID(int apartmentID) {
+        String startEndDate="";
+        String SELECT_QUERY = "SELECT concat(c.start_date, ' ~ ', c.end_date) as startEndDate\n" +
+                "FROM contract c\n" +
+                "JOIN tenant t ON c.tenant_id = t.tenant_id\n" +
+                "JOIN apartment a ON a.apartment_id = t.apartment_id\n" +
+                "WHERE a.apartment_id = ?;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, apartmentID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    startEndDate = resultSet.getString("startEndDate");
+
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for tenant ID: " + apartmentID, e);
+        }
+        return startEndDate;
+    }
+    public static String getBillByApartmentID(int apartmentID) {
+        String bill="";
+        String SELECT_QUERY =
+//                "SELECT a.apartment_id \n" +
+//                "FROM apartment a\n" +
+//                "JOIN tenant t ON a.apartment_id = t.apartment_id\n" +
+//                "WHERE apartment_id = ?;";
+                "SELECT a.apartment_id,\n" +
+                        "CASE\n" +
+                        "WHEN COUNT(DISTINCT c.contract_id) = COUNT(DISTINCT p.contract_id) THEN 'complete'\n" +
+                        "ELSE 'incomplete'\n" +
+                        "END AS bill\n" +
+                        "FROM\n" +
+                        "apartment a\n" +
+                        "LEFT JOIN tenant t ON a.apartment_id = t.apartment_id\n" +
+                        "LEFT JOIN contract c ON t.tenant_id = c.tenant_id\n" +
+                        "LEFT JOIN payment p ON c.contract_id = p.contract_id\n" +
+                        "WHERE\n" +
+                        "a.apartment_id = ?\n" +
+                        "GROUP BY\n" +
+                        "a.apartment_id;";
+        try {
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setInt(1, apartmentID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    bill = resultSet.getString("bill");
+
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving for tenant ID: " + apartmentID, e);
+        }
+        return bill;
+    }
+    public static Apartment getApartmentByTenantID(int tenantID) {
         Apartment apm = new Apartment();
         String SELECT_QUERY = "SELECT *\n" +
                 "FROM apartment\n" +
@@ -289,7 +345,6 @@ public class ApartmentQuery {
         }
         return building_name;
     }
-
 //
 
 //
