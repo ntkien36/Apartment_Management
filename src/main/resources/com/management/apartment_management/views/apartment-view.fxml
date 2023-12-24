@@ -65,7 +65,7 @@
                 <Insets />
             </opaqueInsets>
         </HBox>
-        <Button layoutX="442.0" layoutY="87.0" mnemonicParsing="false" onAction="#filtering" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
+        <Button layoutX="445.0" layoutY="87.0" mnemonicParsing="false" onAction="#filtering" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
             <font>
                 <Font name="Segoe UI" size="14.0" />
             </font>
@@ -78,7 +78,7 @@
             </graphic>
         </Button>
         <TextField fx:id="filter" layoutX="204.0" layoutY="87.0" onMouseClicked="#filter" prefHeight="30.0" prefWidth="216.0" promptText="Filter for Building ID" style="-fx-background-color: #FFFFFF;" visible="false" />
-      <Button layoutX="619.0" layoutY="86.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+      <Button layoutX="622.0" layoutY="86.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
@@ -90,7 +90,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="538.0" layoutY="86.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+      <Button layoutX="541.0" layoutY="86.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>

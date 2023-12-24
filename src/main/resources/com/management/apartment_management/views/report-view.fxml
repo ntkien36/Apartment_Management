@@ -64,7 +64,7 @@
                 <Insets />
             </opaqueInsets>
         </HBox>
-      <Button layoutX="608.0" layoutY="89.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+      <Button layoutX="622.0" layoutY="87.0" mnemonicParsing="false" onAction="#add" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
@@ -76,7 +76,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="527.0" layoutY="89.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
+      <Button layoutX="541.0" layoutY="87.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #5e81ac;" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
@@ -88,7 +88,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="433.0" layoutY="90.0" mnemonicParsing="false" onAction="#filter" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
+      <Button layoutX="447.0" layoutY="88.0" mnemonicParsing="false" onAction="#filter" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #5e81ac;" text="Filter" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>

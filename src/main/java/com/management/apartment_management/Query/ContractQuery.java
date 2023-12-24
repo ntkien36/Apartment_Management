@@ -65,8 +65,8 @@ public class ContractQuery {
         return contracts;
     }
     public static int deleteContract(int contract_id) {
-        String DELETE_CONTRACT_QUERY = "DELETE FROM contract WHERE tenant_id = ?";
-        String DELETE_PAYMENT_QUERY = "DELETE FROM payment WHERE tenant_id = ?";
+        String DELETE_CONTRACT_QUERY = "DELETE FROM contract WHERE contract_id = ?";
+        String DELETE_PAYMENT_QUERY = "DELETE FROM payment WHERE contract_id = ?";
 
         try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
              PreparedStatement deletePaymentStatement = conn.prepareStatement(DELETE_PAYMENT_QUERY);

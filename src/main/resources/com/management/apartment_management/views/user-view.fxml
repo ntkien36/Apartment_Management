@@ -21,7 +21,7 @@
                     <children>
                         <HBox>
                             <children>
-                                <Button id="menuButton" fx:id="buttonApartment" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToMyApartment" prefHeight="50.0" prefWidth="207.0" text="My Apartment" textAlignment="CENTER" textFill="WHITE">
+                                <Button id="menuButton" fx:id="buttonApartment" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToMyApartment" prefHeight="50.0" prefWidth="207.0" text="My Apartment" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -40,7 +40,7 @@
                         </HBox>
                         <HBox fx:id="statisticHbox">
                             <children>
-                                <Button fx:id="buttonPayment" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToPayment" prefHeight="50.0" prefWidth="283.0" text="Payment History" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="buttonPayment" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToPayment" prefHeight="50.0" prefWidth="283.0" text="Payment History" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -56,7 +56,7 @@
                         </HBox>
                   <HBox fx:id="statisticHbox2">
                      <children>
-                        <Button fx:id="buttonReport" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToReport" prefHeight="50.0" prefWidth="283.0" text="Report" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="buttonReport" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToReport" prefHeight="50.0" prefWidth="283.0" text="Report" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -72,7 +72,7 @@
                   </HBox>
                         <HBox>
                             <children>
-                                <Button id="menuButton" fx:id="buttonSetting" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="50.0" prefWidth="254.0" text="Settings" textAlignment="CENTER" textFill="WHITE">
+                                <Button id="menuButton" fx:id="buttonSetting" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="50.0" prefWidth="254.0" text="Settings" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -86,7 +86,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Button id="menuButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="215.0" text="LogOut" textAlignment="CENTER" textFill="WHITE">
+                        <Button id="menuButton" fx:id="logoutButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="215.0" text="LogOut" textAlignment="CENTER" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>

@@ -19,14 +19,14 @@
             <children>
                 <VBox layoutX="-1.0" layoutY="88.0" minWidth="180.0" prefHeight="562.0" prefWidth="191.0" spacing="30.0" style="-fx-background-color: transparent;">
                     <children>
-                        <HBox>
+                        <HBox prefHeight="50.0" prefWidth="97.0">
                             <children>
-                                <Button id="menuButton" fx:id="buttonBuilding" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToBuilding" prefHeight="50.0" prefWidth="254.0" text="Building" textAlignment="CENTER" textFill="WHITE">
+                                <Button id="menuButton" fx:id="buttonBuilding" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToBuilding" prefHeight="50.0" prefWidth="194.0" text="Building" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
                                     <graphic>
-                                        <ImageView fitHeight="39.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/condominium.png" />
                                  </image>
@@ -37,7 +37,7 @@
                         </HBox>
                         <HBox>
                             <children>
-                                <Button id="menuButton" fx:id="buttonApartment" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToApartment" prefHeight="50.0" prefWidth="207.0" text="Apartment" textAlignment="CENTER" textFill="WHITE">
+                                <Button id="menuButton" fx:id="buttonApartment" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToApartment" prefHeight="50.0" prefWidth="207.0" text="Apartment" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -56,7 +56,7 @@
                         </HBox>
                         <HBox fx:id="medicalHbox">
                             <children>
-                                <Button fx:id="buttonTenant" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToTenant" prefHeight="50.0" prefWidth="335.0" text="Tenant" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="buttonTenant" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToTenant" prefHeight="50.0" prefWidth="335.0" text="Tenant" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -72,7 +72,7 @@
                         </HBox>
                   <HBox fx:id="statisticHbox1">
                      <children>
-                        <Button fx:id="buttonContract" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToContract" prefHeight="50.0" prefWidth="283.0" text="Lease Contracts" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="buttonContract" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToContract" prefHeight="50.0" prefWidth="283.0" text="Lease Contracts" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -88,7 +88,7 @@
                   </HBox>
                         <HBox fx:id="statisticHbox">
                             <children>
-                                <Button fx:id="buttonPayment" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToPayment" prefHeight="50.0" prefWidth="283.0" text="Payment History" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="buttonPayment" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToPayment" prefHeight="50.0" prefWidth="283.0" text="Payment History" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -104,7 +104,7 @@
                         </HBox>
                   <HBox fx:id="statisticHbox2">
                      <children>
-                        <Button fx:id="buttonReport" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#switchToReport" prefHeight="50.0" prefWidth="283.0" text="Report" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="buttonReport" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToReport" prefHeight="50.0" prefWidth="283.0" text="Report" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -118,7 +118,7 @@
                         </Button>
                      </children>
                   </HBox>
-                        <Button id="menuButton" fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="215.0" text="LogOut" textAlignment="CENTER" textFill="WHITE">
+                        <Button id="menuButton" fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="215.0" text="LogOut" textAlignment="CENTER" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
