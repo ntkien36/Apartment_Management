@@ -407,7 +407,76 @@ public class PaymentController implements Initializable {
             });
         });
 
+
+        FilteredList<Payment> filteredData1 = new FilteredList<>(paymentList, b -> true);
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData1.setPredicate(person -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = search.getText().toLowerCase();
+                if (person.getTenantName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            int soDu = filteredData1.size() % ROWS_PER_PAGE;
+            if (soDu != 0) pagination.setPageCount(filteredData1.size() / ROWS_PER_PAGE + 1);
+            else pagination.setPageCount(filteredData1.size() / ROWS_PER_PAGE);
+            pagination.setMaxPageIndicatorCount(5);
+            pagination.setPageFactory(pageIndex->{
+                indexColumn.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Payment, Payment>, ObservableValue<Payment>>) b -> new ReadOnlyObjectWrapper(b.getValue()));
+
+                indexColumn.setCellFactory(new Callback<TableColumn<Payment, Payment>, TableCell<Payment, Payment>>() {
+                    @Override
+                    public TableCell<Payment, Payment> call(TableColumn<Payment, Payment> param) {
+                        return new TableCell<Payment, Payment>() {
+                            @Override
+                            protected void updateItem(Payment item, boolean empty) {
+                                super.updateItem(item, empty);
+
+                                if (this.getTableRow() != null && item != null) {
+                                    setText(this.getTableRow().getIndex() + 1 + pageIndex * ROWS_PER_PAGE + "");
+                                } else {
+                                    setText("");
+                                }
+                            }
+                        };
+                    }
+                });
+                indexColumn.setSortable(false);
+                tenantName.setCellValueFactory(new PropertyValueFactory<>("tenantName"));
+                amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+                timePayment.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+                note.setCellValueFactory(new PropertyValueFactory<>("note"));
+
+                delete.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+                delete.setCellFactory(param -> new ButtonController.DeleteButtonCell());
+
+                edit.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+                edit.setCellFactory(param -> new ButtonController.EditButtonCell(basePane));
+
+                int lastIndex = 0;
+                int displace = filteredData1.size() % ROWS_PER_PAGE;
+                if (displace > 0) {
+                    lastIndex = filteredData1.size() / ROWS_PER_PAGE;
+                } else {
+                    lastIndex = filteredData1.size() / ROWS_PER_PAGE - 1;
+                }
+                if (filteredData1.isEmpty()) table.setItems(FXCollections.observableArrayList(filteredData1));
+                else {
+                    if (lastIndex == pageIndex && displace > 0) {
+                        table.setItems(FXCollections.observableArrayList(filteredData1.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + displace)));
+                    } else {
+                        table.setItems(FXCollections.observableArrayList(filteredData1.subList(pageIndex * ROWS_PER_PAGE, pageIndex * ROWS_PER_PAGE + ROWS_PER_PAGE)));
+                    }
+                }
+                return table;
+            });
+        });
     }
+
 
     private boolean isFilterVisible = false;
 //    @FXML

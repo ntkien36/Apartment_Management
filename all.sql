@@ -703,11 +703,13 @@ values
 (97, 'user97', 'password97', 'Tenant'),
 (98, 'user98', 'password98', 'Tenant'),
 (99, 'user99', 'password99', 'Tenant'),
-(100, 'user100', 'password100', 'Tenant');
+(100, 'user100', 'password100', 'Tenant'),
+(101, 'admin', '123', 'Admin');
 
 ALTER TABLE user
 ADD tenant_id int;
 
+UPDATE user SET tenant_id = 0 WHERE user_id = 101;
 UPDATE user SET tenant_id = 100 WHERE user_id = 1;
 UPDATE user SET tenant_id = 2 WHERE user_id = 2;
 UPDATE user SET tenant_id = 10 WHERE user_id = 3;
