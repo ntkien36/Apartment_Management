@@ -88,14 +88,14 @@
                      </font></TextField>
                </children>
             </HBox>
-            <ImageView fitHeight="183.0" fitWidth="169.0" layoutX="475.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="183.0" fitWidth="169.0" layoutX="443.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/bussiness-man.png" />
                </image>
             </ImageView>
-            <TextField fx:id="nameText" alignment="CENTER" layoutX="480.0" layoutY="198.0" prefHeight="43.0" prefWidth="159.0" promptText="Tenant" style="-fx-background-color: #ffffff;">
+            <TextField fx:id="nameText" alignment="CENTER" layoutX="411.0" layoutY="205.0" prefHeight="51.0" prefWidth="233.0" promptText="Tenant" style="-fx-background-color: #ffffff;">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
          </children>
