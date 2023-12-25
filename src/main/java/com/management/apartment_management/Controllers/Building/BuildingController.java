@@ -114,6 +114,7 @@ public class BuildingController implements Initializable {
             DetailBuildingController popupController = fxmlLoader.getController();
             Building selectedBuilding = table.getSelectionModel().getSelectedItem();
             popupController.nameText.setText(selectedBuilding.getName());
+            popupController.idText.setText(String.valueOf(selectedBuilding.getId()));
             popupController.addressText.setText(selectedBuilding.getAddress());
             popupController.totalText.setText(String.valueOf(selectedBuilding.getTotal()));
             popupController.rentText.setText(String.valueOf(ApartmentQuery.getNumberOfApartmentsByBuildingID(selectedBuilding.getId())));

@@ -98,7 +98,7 @@
                 </VBox>
                 <HBox layoutX="-1.0" layoutY="14.0" prefHeight="91.0" prefWidth="192.0">
                     <children>
-                        <Button id="menuButton" fx:id="dashboardButton" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="198.0" text="BKNCC" textAlignment="CENTER" textFill="WHITE">
+                        <Button id="menuButton" fx:id="dashboardButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" prefWidth="198.0" text="BKNCC" textAlignment="CENTER" textFill="WHITE">
                             <font>
                                 <Font name="Segoe UI Bold" size="18.0" />
                             </font>

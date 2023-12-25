@@ -28,7 +28,7 @@
                   <TableColumn fx:id="rent" prefWidth="212.800048828125" text="Rent" />
               </columns>
             </TableView>
-            <HBox alignment="CENTER" layoutX="16.0" layoutY="-8.0" prefHeight="45.0" prefWidth="311.0" spacing="10.0">
+            <HBox alignment="CENTER" layoutX="335.0" layoutY="-8.0" prefHeight="45.0" prefWidth="311.0" spacing="10.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="64.0" text="Address" />
                   <TextField fx:id="addressText" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="id" />
@@ -44,6 +44,12 @@
                <children>
                   <Label prefHeight="18.0" prefWidth="50.0" text="Rented " />
                   <TextField fx:id="rentText" prefHeight="26.0" prefWidth="244.0" style="-fx-background-color: #ffffff;" text="totalRent" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="16.0" layoutY="-8.0" prefHeight="45.0" prefWidth="311.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="137.0" text="Building ID" />
+                  <TextField fx:id="idText" prefHeight="26.0" prefWidth="257.0" style="-fx-background-color: #ffffff;" text="buildingId" />
                </children>
             </HBox>
          </children>

@@ -70,6 +70,8 @@ public class DetailBuildingController implements Initializable {
 
     @FXML
     private TextField search;
+    @FXML
+    public TextField idText;
 
     @FXML
     public TableColumn<Apartment, Integer> size;
