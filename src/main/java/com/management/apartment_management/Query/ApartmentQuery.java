@@ -112,7 +112,7 @@ public class ApartmentQuery {
     }
 
     public static int deleteApartment(int apartment_id) {
-        String DELETE_TENANT_QUERY = "UPDATE tenant SET apartment_id = NULL WHERE apartment_id = ? LIMIT 1";
+        String DELETE_TENANT_QUERY = "UPDATE tenant SET apartment_id = NULL WHERE apartment_id = ?;\n";
         String DELETE_APARTMENT_QUERY = "DELETE FROM apartment WHERE apartment_id = ?";
 
         try (Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);

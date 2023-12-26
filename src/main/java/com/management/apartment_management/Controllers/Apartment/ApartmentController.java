@@ -204,11 +204,11 @@ public class ApartmentController implements Initializable {
                 if (type == okButton) {
                     int ID = selectedApartment.getID();
                     int res = ApartmentQuery.deleteApartment(ID);
-                    if (res == 0) {
-                        createDialog(Alert.AlertType.WARNING, "Notification", "Error, try again later!", "");
-                    } else {
+//                    if (res == 0 || res == 1) {
                         createDialog(Alert.AlertType.WARNING, "Notification", "Delete successfully!", "");
-                    }
+//                    } else {
+//                        createDialog(Alert.AlertType.WARNING, "Notification", "Error, try again later!", "");
+//                    }
                 }
             });
         }
